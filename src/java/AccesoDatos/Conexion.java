@@ -13,8 +13,8 @@ import javax.swing.table.DefaultTableModel;
 public class Conexion 
 {
     private String Usuario="postgres"; 
-    private String Password="lujoca12"; 
-    private String Nombre_Base_Datos="GRADUADOS";
+    private String Password="123456"; 
+    private String Nombre_Base_Datos="bd_postgrado";
     //private String Driver="org.gjt.mm.mysql.Driver";   // Para conectar con MySQL
     private String Driver="org.postgresql.Driver";
     public Connection Conexion;
