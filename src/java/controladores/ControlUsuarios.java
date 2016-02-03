@@ -6,6 +6,7 @@
 package controladores;
 
 import AccesoDatos.Conexion;
+import encriptacion.Class_Encript;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -30,6 +31,8 @@ public class ControlUsuarios extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String usuario = request.getParameter("txtUser").toString();
             String clave = request.getParameter("txtPass1").toString();
+            
+            String passw = Class_Encript.getStringMessageDigest(clave, Class_Encript.SHA256);
             
             Conexion conex = new Conexion();
             conex.Conectar();
