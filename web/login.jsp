@@ -14,13 +14,13 @@
         <link href="css/estilos-login.css" rel="stylesheet">
     </head>
     <body>
-        <form class="login-form" >
+        <form class="login-form" method="POST" action="ControlUsuarios.dbo">
             <h2 class="form-signin-heading">Inicia Sesión</h2>
             <label for="txt_User" class="sr-only">Número de Cédula</label>
             <input id="txt_User" class="form-control login-form-input" placeholder="Número de cédula" 
-                   required="" autofocus="" pattern="\d{10}" title="Ingrese su número de cédula!">
+                   required="" autofocus="" pattern="^([a-z]+[0-9]{0,2}){5,12}$" title="Ingrese su nick/usuario!" value="" />
             <label for="txt_Pass" class="sr-only">Clave</label>
-            <input id="txt_Pass" class="form-control login-form-input" placeholder="Clave" required="" type="password">
+            <input id="txt_Pass" class="form-control login-form-input" placeholder="Clave" required="" type="password" value="" />
             <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
         </form>
     </body>
