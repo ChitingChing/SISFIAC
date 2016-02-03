@@ -29,8 +29,8 @@ public class ControlUsuarios extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
-            String usuario = request.getParameter("txtUser").toString();
-            String clave = request.getParameter("txtPass1").toString();
+            String usuario = request.getParameter("txt_User").toString();
+            String clave = request.getParameter("txt_Pass").toString();
             
             String passw = Class_Encript.getStringMessageDigest(clave, Class_Encript.SHA256);
             
