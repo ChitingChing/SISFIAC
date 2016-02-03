@@ -41,11 +41,11 @@ public class ControlUsuarios extends HttpServlet {
             boolean band = false;
             try {
                 //comparando datos
-                resultado = conex.EjecuatarProcedimietoFullParametros("obtener_usuario", param);
+                resultado = conex.EjecuatarProcedimietoFullParametros("usuario_acceso", param);
                 while(resultado.next()){
                     //Parametros de la bd para guardar en la sesion
-                    request.getSession().setAttribute("Cedula",resultado.getString(5));//Cedula del usuario
-                    request.getSession().setAttribute("usuario", resultado.getString(1));//Nombre del usuario
+                    request.getSession().setAttribute("Cedula",resultado.getString(3));//Cedula del usuario
+                    request.getSession().setAttribute("usuario", resultado.getString(1)+" "+resultado.getString(2));//Nombre del usuario
                     request.getSession().setAttribute("rol", resultado.getString(13));//Rol del usuario
                     request.getSession().setAttribute("estado", "ok");
                     band = true;
@@ -58,7 +58,7 @@ public class ControlUsuarios extends HttpServlet {
                     if(rol_Usuario.equals("Administrador")){
                         response.sendRedirect("Admin/PanelAdministracion.jsp");
                     }
-                    else if(rol_Usuario.equals("usuario")){
+                    else if(rol_Usuario.equals("Secretario(a)")){
                         response.sendRedirect("Admin/PanelUsuario.jsp");
                     }
                 }else{
