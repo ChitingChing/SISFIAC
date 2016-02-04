@@ -47,31 +47,23 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="about.html">Aboút</a>
+                        <a href="#">Contáctos</a>
                     </li>
+                    
                     <li>
-                        <a href="services.html">Services</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="#">Acerca de Nosotros</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servicios en línea <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>
+                            <!--<li>
                                 <a href="portfolio-1-col.html">Solicitud de Inscripción</a>
-                            </li>
+                            </li>-->
                             <li>
                                 <a href="portfolio-2-col.html">Consulta de Notas</a>
                             </li>
                             <li>
                                 <a href="portfolio-3-col.html">Consulta de Pagos</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="portfolio-item.html">Single Portfolio Item</a>
                             </li>
                         </ul>
                     </li>

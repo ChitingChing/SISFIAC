@@ -37,7 +37,7 @@ public class ControlUsuarios extends HttpServlet {
             Conexion conex = new Conexion();
             conex.Conectar();
             ResultSet resultado;
-            String [] param = {usuario,clave};
+            String [] param = {usuario,passw};
             boolean band = false;
             try {
                 //comparando datos
@@ -46,28 +46,32 @@ public class ControlUsuarios extends HttpServlet {
                     //Parametros de la bd para guardar en la sesion
                     request.getSession().setAttribute("Cedula",resultado.getString(3));//Cedula del usuario
                     request.getSession().setAttribute("usuario", resultado.getString(1)+" "+resultado.getString(2));//Nombre del usuario
-                    request.getSession().setAttribute("rol", resultado.getString(13));//Rol del usuario
+                    request.getSession().setAttribute("rol", resultado.getString(4));//Rol del usuario
                     request.getSession().setAttribute("estado", "ok");
                     band = true;
-                }conex.Cerrar();
-                
-                String cedula = (String) request.getSession().getAttribute("Cedula");
-                String usuario_Bd = (String) request.getSession().getAttribute("usuario");
-                String rol_Usuario = (String) request.getSession().getAttribute("rol");
+                }
+                conex.Cerrar();
                 if(band){
-                    if(rol_Usuario.equals("Administrador")){
+                    
+                    String cedula = (String) request.getSession().getAttribute("Cedula");
+                    String usuario_Bd = (String) request.getSession().getAttribute("usuario");
+                    String rol_Usuario = (String) request.getSession().getAttribute("rol");
+                    
+                    if(rol_Usuario.equals("Administrador") || rol_Usuario.equals("Secretario(a)")){
+                        //Administrador y secretaria
                         response.sendRedirect("Admin/PanelAdministracion.jsp");
                     }
-                    else if(rol_Usuario.equals("Secretario(a)")){
-                        response.sendRedirect("Admin/PanelUsuario.jsp");
+                    else if(rol_Usuario.equals("Profesor(a)")){
+                        //Usuarios y docentes
+                        response.sendRedirect("Admin/PanelUsuarioDocente.jsp");
                     }
                 }else{
                     request.getSession().setAttribute("error","error");
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect("login.jsp");
                    }
             } catch (Exception e) {
                 request.getSession().setAttribute("error","error");
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("login.jsp");
             }
             
             //out.println("Usuario o contraseña incorrecta");

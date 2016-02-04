@@ -14,7 +14,7 @@
     <meta name="description" content="Postgrado UTEQ">
     <meta name="author" content="SISFIAC">
     <link href="../img/logoPostgrado.ico" rel="shortcut icon">
-    <title>Panel de Administración</title>
+    <title>Panel de Usuarios</title>
     
     <!-- bootstrap 3.0.2 -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -265,7 +265,7 @@
                 </header>
                 <div class="wrapper row-offcanvas row-offcanvas-left">
                     <!-- Left side column. contains the logo and sidebar -->
-                    <aside class="left-side sidebar-offcanvas" >
+                    <aside class="left-side sidebar-offcanvas">
                         <!-- sidebar: style can be found in sidebar.less -->
                         <section class="sidebar">
                             <!-- Sidebar user panel -->
