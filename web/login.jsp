@@ -44,7 +44,7 @@
                 %>
                 <a class="clave-form" href="">¿Has olvidado tu clave?</a>
             </form>
-
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 
             <!-- Bootstrap Core JavaScript -->
             <script src="js/bootstrap.min.js"></script>
