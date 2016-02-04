@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="description" content="Postgrado UTEQ">
     <meta name="author" content="SISFIAC">
     <link href="../img/logoPostgrado.ico" rel="shortcut icon">
@@ -325,7 +325,7 @@
                 <!-- Main content -->
                 <section class="content">
                     <!--Total imagenes documentos-->
-                  <!--  <div class="row" style="margin-bottom:5px;">
+                  <div class="row" style="margin-bottom:5px;">
 
 
                         <div class="col-md-3">
@@ -364,8 +364,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>-->
-
+                    </div>
+<!--Fin de cuadros-->
                     <!-- Main row -->
                     <div class="row">
 
