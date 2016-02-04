@@ -8,10 +8,20 @@ and open the template in the editor.
     Author     : Usuario 09
 */
 .login-form{
-    width: 330px;
+    
+    width: 300px;    
     margin: auto;
-    padding: 2em 1em;
+    padding-top:  10em ;
 }
 .login-form-input{    
     margin-bottom: 1em;
+}
+.titulo-form{
+    margin-top: 3em;
+    text-align: center;
+}
+.clave-form{
+    display: block;
+    margin: 1em auto;
+    text-align: right;
 }
