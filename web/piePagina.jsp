@@ -9,7 +9,7 @@
     <footer style="text-align: center">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Desarrollado por la Carrera de Ingeniería en Sistemas. 2016-Presente</p>
+                    <p>Desarrollado por la Carrera de Ingeniería en Sistemas. 2016-Hasta el infinito y mas allá</p>
                 </div>
             </div>
         </footer>
