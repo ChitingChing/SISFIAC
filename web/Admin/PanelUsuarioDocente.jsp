@@ -10,11 +10,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="description" content="Postgrado UTEQ">
     <meta name="author" content="SISFIAC">
     <link href="../img/logoPostgrado.ico" rel="shortcut icon">
-    <title>Panel de Usuarios</title>
+    <title>Panel de Administración</title>
     
     <!-- bootstrap 3.0.2 -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -39,10 +39,9 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <!-- Theme style -->
     <link href="../css/styleAdmin.css" rel="stylesheet" type="text/css" />
+    <script src="../js/ajax.js" type="text/javascript"></script>
 
-          <style type="text/css">
-
-          </style>
+          <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
       </head>
       <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
@@ -224,9 +223,9 @@
                                 <span><%=session.getAttribute("usuario")%><i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
-                                <li class="dropdown-header text-center">Account</li>
+                                <li class="dropdown-header text-center">Cuenta</li>
 
-                                <li>
+                              <!--  <li>
                                     <a href="#">
                                     <i class="fa fa-clock-o fa-fw pull-right"></i>
                                         <span class="badge badge-success pull-right">10</span> Updates</a>
@@ -239,23 +238,23 @@
                                         "badge pull-right">11</span> FAQ</a>
                                 </li>
 
-                                <li class="divider"></li>
+                                <li class="divider"></li>-->
 
                                     <li>
                                         <a href="#">
                                         <i class="fa fa-user fa-fw pull-right"></i>
-                                            Profile
+                                            Perfil
                                         </a>
                                         <a data-toggle="modal" href="#modal-user-settings">
                                         <i class="fa fa-cog fa-fw pull-right"></i>
-                                            Settings
+                                            Ajustes
                                         </a>
                                         </li>
 
                                         <li class="divider"></li>
 
                                         <li>
-                                            <a href="#"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+                                            <a href="../cerrarSesion.dbo"><i class="fa fa-ban fa-fw pull-right"></i> Salir</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -265,7 +264,7 @@
                 </header>
                 <div class="wrapper row-offcanvas row-offcanvas-left">
                     <!-- Left side column. contains the logo and sidebar -->
-                    <aside class="left-side sidebar-offcanvas">
+                    <aside class="left-side sidebar-offcanvas" >
                         <!-- sidebar: style can be found in sidebar.less -->
                         <section class="sidebar">
                             <!-- Sidebar user panel -->
@@ -293,7 +292,12 @@
                             <!-- sidebar menu: : style can be found in sidebar.less -->
                             <ul class="sidebar-menu">
                                 <li class="active">
-                                    <a href="#">
+                                    <a href="../index.jsp">
+                                        <i class="fa fa-home"></i> <span>Inicio</span>
+                                    </a>
+                                </li>
+                                <li >
+                                    <a onclick="CargarPaginaExterna('cargarDatos','../Modulo/Academico','registrarAsistencias')">
                                         <i class="fa fa-dashboard"></i> <span>Registro de Asistencias</span>
                                     </a>
                                 </li>
@@ -314,6 +318,7 @@
                                         <i class="fa fa-glass"></i> <span>Reportes</span>
                                     </a>
                                 </li>
+                                
 
                             </ul>
                         </section>
@@ -325,7 +330,7 @@
                 <!-- Main content -->
                 <section class="content">
                     <!--Total imagenes documentos-->
-                  <!--  <div class="row" style="margin-bottom:5px;">
+                  <div class="row" style="margin-bottom:5px;">
 
 
                         <div class="col-md-3">
@@ -364,8 +369,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>-->
-
+                    </div>
+<!--Fin de cuadros-->
                     <!-- Main row -->
                     <div class="row">
 
@@ -376,7 +381,9 @@
                                     Movimientos
                                 </header>
                                 <div class="panel-body">
-                                    <canvas id="linechart" width="600" height="500"></canvas>
+                                    <div id="cargarDatos" width="600" height="500">
+                                        <h1>mm</h1>
+                                    </div>
                                 </div>
                                         </section>
                                         <!--earning graph end-->

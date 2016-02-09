@@ -53,8 +53,6 @@ public class ControlUsuarios extends HttpServlet {
                 conex.Cerrar();
                 if(band){
                     
-                    String cedula = (String) request.getSession().getAttribute("Cedula");
-                    String usuario_Bd = (String) request.getSession().getAttribute("usuario");
                     String rol_Usuario = (String) request.getSession().getAttribute("rol");
                     
                     if(rol_Usuario.equals("Administrador") || rol_Usuario.equals("Secretario(a)")){

@@ -39,10 +39,9 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <!-- Theme style -->
     <link href="../css/styleAdmin.css" rel="stylesheet" type="text/css" />
+    <script src="../js/ajax.js" type="text/javascript"></script>
 
-          <style type="text/css">
-
-          </style>
+          <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
       </head>
       <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
@@ -224,9 +223,9 @@
                                 <span><%=session.getAttribute("usuario")%><i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
-                                <li class="dropdown-header text-center">Account</li>
+                                <li class="dropdown-header text-center">Cuenta</li>
 
-                                <li>
+                              <!--  <li>
                                     <a href="#">
                                     <i class="fa fa-clock-o fa-fw pull-right"></i>
                                         <span class="badge badge-success pull-right">10</span> Updates</a>
@@ -239,23 +238,23 @@
                                         "badge pull-right">11</span> FAQ</a>
                                 </li>
 
-                                <li class="divider"></li>
+                                <li class="divider"></li>-->
 
                                     <li>
                                         <a href="#">
                                         <i class="fa fa-user fa-fw pull-right"></i>
-                                            Profile
+                                            Perfil
                                         </a>
                                         <a data-toggle="modal" href="#modal-user-settings">
                                         <i class="fa fa-cog fa-fw pull-right"></i>
-                                            Settings
+                                            Ajustes
                                         </a>
                                         </li>
 
                                         <li class="divider"></li>
 
                                         <li>
-                                            <a href="#"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+                                            <a href="../cerrarSesion.dbo"><i class="fa fa-ban fa-fw pull-right"></i> Salir</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -293,6 +292,16 @@
                             <!-- sidebar menu: : style can be found in sidebar.less -->
                             <ul class="sidebar-menu">
                                 <li class="active">
+                                    <a href="../index.jsp">
+                                        <i class="fa fa-home"></i> <span>Inicio</span>
+                                    </a>
+                                </li>
+                                <li >
+                                    <a href="#">
+                                        <i class="fa fa-user"></i> <span>Registro de Docentes</span>
+                                    </a>
+                                </li>
+                                <li >
                                     <a href="#">
                                         <i class="fa fa-dashboard"></i> <span>Registro de Asistencias</span>
                                     </a>
@@ -314,6 +323,7 @@
                                         <i class="fa fa-glass"></i> <span>Reportes</span>
                                     </a>
                                 </li>
+                                
 
                             </ul>
                         </section>
@@ -376,7 +386,7 @@
                                     Movimientos
                                 </header>
                                 <div class="panel-body">
-                                    <canvas id="linechart" width="600" height="500"></canvas>
+                                    <div id="cargar_Elementos" width="600" height="500"></div>
                                 </div>
                                         </section>
                                         <!--earning graph end-->
@@ -521,7 +531,7 @@
                 radioClass: 'iradio_flat-grey'
             });
 </script>
-<script type="text/javascript">
+<!--<script type="text/javascript">
     $(function() {
                 "use strict";
                 //BAR CHART
@@ -557,6 +567,6 @@
 
             });
             // Chart.defaults.global.responsive = true;
-</script>
+</script>-->
 </body>
 </html>
