@@ -30,6 +30,3 @@ function CargarPaginaExterna(NombreContenedor,nombreCarpeta,nombrePagina)
     $("#"+NombreContenedor).html('<div><center><img src="../img/ajax-loader.gif"/></center></div>');
     $("#"+NombreContenedor).load('../'+nombreCarpeta+'/'+nombrePagina+'.jsp');
 }
-function paginaCompleta(url){
-    window.open(url+'.jsp','', 'fullscreen=yes, scrollbars=auto, statusbar=no, left=1, top=1'); 
-}

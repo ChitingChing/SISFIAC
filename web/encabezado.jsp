@@ -75,7 +75,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Acceder <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="cursor" onclick="paginaCompleta('login');">Iniciar Sesión</a>
+                                        <a href="login.jsp">Iniciar Sesión</a>
                                     </li>
                                 </ul>
                             <%}%>
