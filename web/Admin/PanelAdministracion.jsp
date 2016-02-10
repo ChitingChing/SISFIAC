@@ -37,9 +37,13 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <!-- <link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" /> -->
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    
     <!-- Theme style -->
     <link href="../css/styleAdmin.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
     <script src="../js/ajax.js" type="text/javascript"></script>
+    <!-- jQuery 2.0.2 -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 
           <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
       </head>
@@ -300,7 +304,7 @@
                                     </a>
                                 </li>
                                 <li >
-                                    <a href="#">
+                                    <a class="cursor" onclick="CargarPaginaExterna('cargar_Elementos','Modulo/Academico','registrarDocente')">
                                         <i class="fa fa-user"></i> <span>Registro de Docentes</span>
                                     </a>
                                 </li>
@@ -478,8 +482,7 @@
         </div><!-- ./wrapper -->
 
 
-        <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        
         <script src="../js/jquery.min.js" type="text/javascript"></script>
 
         <!-- jQuery UI 1.10.3 -->

@@ -1,44 +1,53 @@
-<%-- 
-    Document   : registrarDocente
-    Created on : 09/02/2016, 14:46:03
-    Author     : server
---%>
-
-
-<!--<!DOCTYPE html>-->
-<!--<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>-->
-<header class="panel-heading">
-      Basic Forms
-  </header>
-  <div class="panel-body">
-      <form role="form">
+<div class="panel-body">
+      <form class="form-horizontal tasi-form" method="get">
           <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              <label class="col-sm-2 col-sm-2 control-label">Default</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control">
+              </div>
           </div>
           <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <label class="col-sm-2 col-sm-2 control-label">Help text</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control">
+                  <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+              </div>
           </div>
           <div class="form-group">
-              <label for="exampleInputFile">File input</label>
-              <input type="file" id="exampleInputFile">
-              <p class="help-block">Example block-level help text here.</p>
+              <label class="col-sm-2 col-sm-2 control-label">Rounder</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control round-input">
+              </div>
           </div>
-          <div class="checkbox">
-              <label>
-                  <input type="checkbox"> Check me out
-              </label>
+          <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">Input focus</label>
+              <div class="col-sm-10">
+                  <input class="form-control" id="focusedInput" type="text" value="This is focused...">
+              </div>
           </div>
-          <button type="submit" class="btn btn-info">Submit</button>
+          <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">Disabled</label>
+              <div class="col-sm-10">
+                  <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">Placeholder</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="placeholder">
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">Password</label>
+              <div class="col-sm-10">
+                  <input type="password" class="form-control" placeholder="">
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-lg-2 col-sm-2 control-label">Static control</label>
+              <div class="col-lg-10">
+                  <p class="form-control-static">email@example.com</p>
+              </div>
+          </div>
       </form>
-
-  </div>
+    </div>
