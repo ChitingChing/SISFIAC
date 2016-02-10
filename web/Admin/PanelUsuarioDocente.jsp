@@ -39,7 +39,11 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <!-- Theme style -->
     <link href="../css/styleAdmin.css" rel="stylesheet" type="text/css" />
+    
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
     <script src="../js/ajax.js" type="text/javascript"></script>
+     <!-- jQuery 2.0.2 -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 
           <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
       </head>
@@ -297,12 +301,12 @@
                                     </a>
                                 </li>
                                 <li >
-                                    <a onclick="CargarPaginaExterna('cargarDatos','../Modulo/Academico','registrarAsistencias')">
+                                    <a class="cursor" onclick="CargarPaginaExterna('cargarDatos','Modulo/Academico','registrarAsistencias')">
                                         <i class="fa fa-dashboard"></i> <span>Registro de Asistencias</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a class="cursor" onclick="CargarPaginaExterna('cargarDatos','Modulo/Academico','registrarnotas')">
                                         <i class="fa fa-gavel"></i> <span>Registro de Calificaciones</span>
                                     </a>
                                 </li>
@@ -472,8 +476,7 @@
         </div><!-- ./wrapper -->
 
 
-        <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+       
         <script src="../js/jquery.min.js" type="text/javascript"></script>
 
         <!-- jQuery UI 1.10.3 -->

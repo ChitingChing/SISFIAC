@@ -27,7 +27,6 @@ function CargarPaginaInterna(NombreContenedor,nombrePagina)
 }
 function CargarPaginaExterna(NombreContenedor,nombreCarpeta,nombrePagina)
 {
-    alert(nombreCarpeta);
-    //$("#"+NombreContenedor).load('../'+nombreCarpeta+'/'+nombrePagina+'.jsp');
-    $("#"+NombreContenedor).load(+nombreCarpeta+'/'+nombrePagina+'.jsp');
+    $("#"+NombreContenedor).html('<div><center><img src="../img/ajax-loader.gif"/></center></div>');
+    $("#"+NombreContenedor).load('../'+nombreCarpeta+'/'+nombrePagina+'.jsp');
 }

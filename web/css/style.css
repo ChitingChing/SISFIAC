@@ -15,5 +15,8 @@ html,body{
 footer, .wrapper:after{
     height: 50px;     
 }
+.cursor{
+    cursor: pointer;
+}
 
 
