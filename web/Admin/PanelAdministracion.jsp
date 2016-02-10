@@ -49,9 +49,12 @@
             <a href="../Admin/PanelAdministracion.jsp" class="logo">
                 <%
                     if(session.getAttribute("rol") != null){
+                        if(session.getAttribute("rol").equals("Administrador") || session.getAttribute("rol").equals("Secretario(a)")){
                 %>
                 <%=session.getAttribute("rol")%>
-                <%}else
+                <%}else if(session.getAttribute("rol").equals("Profesor(a)")){%>
+                    response.sendRedirect("PanelUsuarioDocente.jsp");
+                <%}}else
                     response.sendRedirect("../index.jsp");
                 %>
                     

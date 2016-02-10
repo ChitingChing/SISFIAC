@@ -9,8 +9,8 @@
               <!-- <th>Client</th> -->
               <th>Deadline</th>
               <!-- <th>Price</th> -->
-              <th>Status</th>
-              <th>Progress</th>
+              <th>Estado</th>
+              <th>Progreso</th>
           </tr>
       </thead>
       <tbody>
