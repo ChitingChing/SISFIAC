@@ -10,6 +10,7 @@ import encriptacion.Class_Encript;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +41,7 @@ public class ControlUsuarios extends HttpServlet {
             String [] param = {usuario,passw};
             boolean band = false;
             try {
-                //comparando datos
+                //comparando datos                                     
                 resultado = conex.EjecuatarProcedimietoFullParametros("usuario_acceso", param);
                 while(resultado.next()){
                     //Parametros de la bd para guardar en la sesion
@@ -57,6 +58,8 @@ public class ControlUsuarios extends HttpServlet {
                     
                     if(rol_Usuario.equals("Administrador") || rol_Usuario.equals("Secretario(a)")){
                         //Administrador y secretaria
+                        //RequestDispatcher rd = request.getRequestDispatcher("Admin/PanelAdministracion.jsp");
+                        //rd.forward(request, response);
                         response.sendRedirect("Admin/PanelAdministracion.jsp");
                     }
                     else if(rol_Usuario.equals("Profesor(a)")){

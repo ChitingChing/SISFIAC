@@ -4,7 +4,7 @@
 
 function mostrarCuadroDialogoPersonalizado(NombreContenedor)
 {
-    var MiContenedor="#"+NombreContenedor;
+   var MiContenedor="#"+NombreContenedor;
    var jQueryDialog1Opts =
    {
       width: 280,

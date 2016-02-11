@@ -36,7 +36,7 @@ public class cerrarSesion extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            if(request.getSession().getAttribute("rol") != null)
+            if(request.getSession().getAttribute("rol") != null){
                 if(request.getSession().getAttribute("rol") != ""){
                     
                     //Session session = (Session) request.getSession();
@@ -45,6 +45,8 @@ public class cerrarSesion extends HttpServlet {
                 }
             else
                     response.sendRedirect("index.jsp");
+            }else
+                response.sendRedirect("index.jsp");
         }
     }
 

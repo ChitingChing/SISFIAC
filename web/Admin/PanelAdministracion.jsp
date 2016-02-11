@@ -342,9 +342,7 @@
                 <!-- Main content -->
                 <section class="content">
                     <!--Total imagenes documentos-->
-                  <div class="row" style="margin-bottom:5px;">
-
-
+               <!--   <div class="row" style="margin-bottom:5px;">
                         <div class="col-md-3">
                             <div class="sm-st clearfix">
                                 <span class="sm-st-icon st-red"><i class="fa fa-check-square-o"></i></span>
@@ -381,28 +379,28 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 <!--Fin de cuadros-->
                     <!-- Main row -->
                     <div class="row">
 
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <!--earning graph start-->
                             <section class="panel">
                                 <header class="panel-heading">
                                     Movimientos
                                 </header>
                                 <div class="panel-body">
-                                    <div id="cargar_Elementos" width="600" height="500"></div>
+                                    <div id="cargar_Elementos" width="100%" height="500"></div>
                                 </div>
                                         </section>
                                         <!--earning graph end-->
 
                                     </div>
-                                    <div class="col-lg-4">
+                                   <!-- <div class="col-lg-4">
 
                                         <!--chat start-->
-                                        <section class="panel">
+                                      <!--  <section class="panel">
                                             <header class="panel-heading">
                                                 Notificaciones
                                             </header>
@@ -462,7 +460,7 @@
 
 
                                                 </div>
-                                        </section>
+                                        </section>-->
 
 
 
