@@ -43,6 +43,13 @@
                            </div>
                       
                   </div>
+                  <div class="form-group" id="contHijo" style="display: none;">
+                          <label class="col-sm-2 col-sm-2 control-label">Descripciòn</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtHijoNombre" id="txtHijoNombre" class="form-control">
+                           </div>
+                      
+                  </div>
               </form>
             </div>
         </div>
