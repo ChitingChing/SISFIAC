@@ -280,7 +280,7 @@
                                     <img src="../img/26115.jpg" class="img-circle" alt="User Image" />
                                 </div>
                                 <div class="pull-left info">
-                                    <p>Hola, <%=session.getAttribute("usuario")%></p>
+                                    <p>Hola</p>
 
                                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                                 </div>
@@ -303,7 +303,12 @@
                                         <i class="fa fa-home"></i> <span>Inicio</span>
                                     </a>
                                 </li>
-                                <li >
+                                <li>
+                                    <a class="cursor" onclick="CargarPaginaInterna('cargar_Elementos','permisosUsuarios')">
+                                        <i class="fa fa-globe"></i> <span>Permisos</span>
+                                    </a>
+                                </li>
+                                <!--<li >
                                     <a class="cursor" onclick="CargarPaginaExterna('cargar_Elementos','Modulo/Academico','registrarDocente')">
                                         <i class="fa fa-user"></i> <span>Registro de Docentes</span>
                                     </a>
@@ -329,7 +334,7 @@
                                     <a href="#">
                                         <i class="fa fa-glass"></i> <span>Reportes</span>
                                     </a>
-                                </li>
+                                </li>-->
                                 
 
                             </ul>
