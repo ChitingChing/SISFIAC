@@ -20,7 +20,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.jsp">PostGrado UTEQ</a>
+            <a class="navbar-brand" href="/SISFIAC/index.jsp">PostGrado UTEQ</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -36,16 +36,16 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Servicios en línea <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="Modulo/Academico/solicitudInscripcion.jsp">Solicitud de Inscripción</a>
+                            <a href="/SISFIAC/Modulo/Academico/solicitudInscripcion.jsp">Solicitud de Inscripción</a>
                         </li>
                         <li>
-                            <a href="portfolio-2-col.html">Consulta de Notas</a>
+                            <a href="">Consulta de Notas</a>
                         </li>
                         <li>
-                            <a href="portfolio-3-col.html">Consulta de Pagos</a>
+                            <a href="">Consulta de Pagos</a>
                         </li>
                         <li>
-                            <a href="Modulo/Biblioteca/Principal.jsp">Biblioteca de Tesis</a>
+                            <a href="/SISFIAC/Modulo/Biblioteca/Principal.jsp">Biblioteca de Tesis</a>
                         </li>
                     </ul>
             
@@ -80,7 +80,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Acceder <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="login.jsp">Iniciar Sesión</a>
+                        <a href="/SISFIAC/login.jsp">Iniciar Sesión</a>
                     </li>
                 </ul>
                 <%}%>
