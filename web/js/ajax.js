@@ -48,7 +48,7 @@ function cambioNivel(){
         $("#contHijo").css("display","block");
         //Cargar Padres
         $.ajax({
-            url: "obtenerPermisoPadres.dbo",
+            url: "../obtenerPermisoPadres.dbo",
             dataType: "text",
             data: {
                 codigo:$("#cboNivel").val()
@@ -71,4 +71,20 @@ function cambioNivel(){
                     }
                 });
     }
+}
+
+function registrarPadre(){
+    $.ajax({
+            url: "../registrarPermisos.dbo",
+            dataType: "text",
+            data: {
+                codigo:$("#cboNivel").val(),
+                nombre: $("#txtPadreNombre").val()
+            },//reques evia el parametro que digito
+            success: function (data) {
+                           alert("Datos Ingresados Correctamente");
+                        },error: function (message) {
+                        response([]);
+                    }
+                });
 }

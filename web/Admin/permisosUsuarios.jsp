@@ -26,7 +26,7 @@
         <!--Nueva creacion de permisos-->
         <div id="about-2" class="tab-pane">
             <div class="panel-body" >
-              <form class="form-horizontal tasi-form" method="get">
+                <form class="form-horizontal tasi-form" method="post" onsubmit="registrarPadre(); return false;">
                   <div class="form-group">
                       <label class="col-sm-2 col-sm-2 control-label">Nivel</label>
                         <div class="col-xs-5 selectContainer">
@@ -39,16 +39,22 @@
                   <div class="form-group" id="contPadre">
                           <label class="col-sm-2 col-sm-2 control-label">Descripciòn</label>
                             <div class="col-sm-10">
-                                <input type="text" name="txtPadreNombre" id="txtPadreNombre" class="form-control">
+                                <input type="text" name="txtPadreNombre" style="text-transform: uppercase;" required="true" id="txtPadreNombre" class="form-control">
                            </div>
                       
                   </div>
                   <div class="form-group" id="contHijo" style="display: none;">
                           <label class="col-sm-2 col-sm-2 control-label">Descripciòn</label>
                             <div class="col-sm-10">
-                                <input type="text" name="txtHijoNombre" id="txtHijoNombre" class="form-control">
+                                <input type="text" name="txtHijoNombre" style="text-transform: uppercase;" id="txtHijoNombre" class="form-control">
                            </div>
                       
+                  </div>
+                  <div class="form-group">
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-10">
+                        <button type="submit" class="btn btn-info">Registrar</button>
+                      </div>
                   </div>
               </form>
             </div>
