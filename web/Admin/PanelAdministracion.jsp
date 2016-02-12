@@ -478,7 +478,7 @@
               <!-- row end -->
                 </section><!-- /.content -->
                 <div class="footer-main">
-                    Copyright &copy PostGrado, 2016
+                    <%@include file="../piePagina.jsp" %>
                 </div>
             </aside><!-- /.right-side -->
 
