@@ -43,7 +43,10 @@
                             </li>
                             <li>
                                 <a href="portfolio-3-col.html">Consulta de Pagos</a>
+                            </li><li>
+                                <a href="Modulo/Biblioteca/Principal.jsp">Biblioteca de Tesis</a>
                             </li>
+                        </ul>
                         </ul>
                     </li>
                     
