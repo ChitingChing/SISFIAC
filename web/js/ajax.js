@@ -87,7 +87,13 @@ function registrarPadre(){
                 nombre: $("#txtPadreNombre").val()
             },//reques evia el parametro que digito
             success: function (data) {
-                           alert(data);
+                           if(data == "ok"){
+                               alert("Datos Ingresados Correctamente");
+                               $("#txtPadreNombre").val("");
+                           }else{
+                               alert("Error al ingresar Datos");
+                           }
+                            
                         },error: function (message) {
                         response([]);
                     }

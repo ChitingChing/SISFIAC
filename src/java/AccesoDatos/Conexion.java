@@ -225,6 +225,37 @@ public class Conexion
                  {}
            return null;
     }
+    public ResultSet EjecutarProcedimietoTresParametros(String nombre,int Parametro1, String parametro2, int Parametro3)
+    {
+           int parametro1= Parametro1;
+           String SQL="{call ";
+           String Num_Parametro=" (";
+           String nombre_procedimiento= nombre;
+           
+           ResultSet rs=null;
+            ResultSetMetaData rsm=null;
+            AccesoDatos.Conexion UnaC = new AccesoDatos.Conexion();
+            UnaC.Conectar();
+            
+                 Num_Parametro+="?,?,?";
+                
+                 try{
+            Connection con = UnaC.Conexion;
+            CallableStatement miProcedimiento =con.prepareCall(SQL+nombre_procedimiento+Num_Parametro+")}");
+            
+            /* Otro proceso de validación para saber y determinar el número de parámetros que se le 
+             darán al procedimiento almacenado.*/
+                    miProcedimiento.setInt(1,parametro1);
+                    miProcedimiento.setString(2,parametro2);
+                    miProcedimiento.setInt(3,Parametro3);
+               
+             miProcedimiento.execute();
+             return miProcedimiento.getResultSet();
+             
+                 }catch(Exception ee)
+                 {}
+           return null;
+    }
     
     
     public ResultSet EjecutarProcedimietoFullParametros(String nombre, String [] ArregloParametroValor)
@@ -257,12 +288,11 @@ public class Conexion
             Connection con = UnaC.Conexion;
             String sent = "{call "+nombre_procedimiento+complemento+")}";
             CallableStatement miProcedimiento =con.prepareCall(sent);
-            
             for (int contador = 0; contador < ArregloParametroValor.length; contador++)
                 {
                     if (ArregloParametroValor[contador]!= null)
                     {
-                     miProcedimiento.setString((contador+1),ArregloParametroValor[contador]);
+                        miProcedimiento.setString((contador+1),ArregloParametroValor[contador]);
                     }
                  }
              rs = miProcedimiento.executeQuery();
@@ -270,6 +300,58 @@ public class Conexion
                  }catch(Exception ee)
                  {
                      setEstado_BD(ee.toString());
+                    //Estado="Error";
+                    //JOptionPane.showMessageDialog(null, "Error "+ee);
+                 }
+                 UnaC.Cerrar();
+           return rs;
+    }
+    
+    public ResultSet EjecutarProcedimietoFullParametrosxTipoValor(String nombre, String [] ArregloParametroValor, String [] ArregloParametroTipo)
+    {
+           String complemento=" (";
+           String nombre_procedimiento= nombre;
+           ResultSet rs=null;
+            ResultSetMetaData rsm=null;
+            AccesoDatos.Conexion UnaC = new AccesoDatos.Conexion();
+            UnaC.Conectar();
+            for (int contador = 0; contador < ArregloParametroValor.length; contador++)
+                {
+                    if (ArregloParametroValor[contador]!= null)
+                    {
+                        if(ArregloParametroValor.length>=1)
+                        {
+                            if(contador==ArregloParametroValor.length-1)
+                            complemento +="?";
+                            else
+                            complemento +="?,";
+                        }
+                        else
+                        {
+                            complemento +="?";
+                        }
+                        
+                    }
+                 }
+                 try{
+            Connection con = UnaC.Conexion;
+            String sent = "{call "+nombre_procedimiento+complemento+")}";
+            CallableStatement miProcedimiento =con.prepareCall(sent);
+            for (int contador = 0; contador < ArregloParametroValor.length; contador++)
+                {
+                    if (ArregloParametroValor[contador]!= null)
+                    {
+                        if(ArregloParametroTipo[contador].equals("int"))
+                            miProcedimiento.setInt((contador+1),Integer.parseInt(ArregloParametroValor[contador]));
+                        else if(ArregloParametroTipo[contador].equals("string"))
+                            miProcedimiento.setString((contador+1),ArregloParametroValor[contador]);
+                    }
+                 }
+             rs = miProcedimiento.executeQuery();
+              
+                 }catch(Exception ee)
+                 {
+                     setEstado_BD("error");
                     //Estado="Error";
                     //JOptionPane.showMessageDialog(null, "Error "+ee);
                  }
