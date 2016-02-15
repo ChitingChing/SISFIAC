@@ -47,7 +47,6 @@ public class registrarPermisos extends HttpServlet {
             String [] paramTipo = {"int","string","int"};
             
             resultado = conex.EjecutarProcedimietoFullParametrosxTipoValor("registrar_permisos", param, paramTipo);
-           // conex.EjecutarProcedimietoTresParametros("registrar_permisos",Integer.valueOf(codigo),nombre,1);
             String estado = conex.getEstado_BD();
             out.println(estado);
         }

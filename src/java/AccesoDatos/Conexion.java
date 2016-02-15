@@ -225,37 +225,7 @@ public class Conexion
                  {}
            return null;
     }
-    public ResultSet EjecutarProcedimietoTresParametros(String nombre,int Parametro1, String parametro2, int Parametro3)
-    {
-           int parametro1= Parametro1;
-           String SQL="{call ";
-           String Num_Parametro=" (";
-           String nombre_procedimiento= nombre;
-           
-           ResultSet rs=null;
-            ResultSetMetaData rsm=null;
-            AccesoDatos.Conexion UnaC = new AccesoDatos.Conexion();
-            UnaC.Conectar();
-            
-                 Num_Parametro+="?,?,?";
-                
-                 try{
-            Connection con = UnaC.Conexion;
-            CallableStatement miProcedimiento =con.prepareCall(SQL+nombre_procedimiento+Num_Parametro+")}");
-            
-            /* Otro proceso de validación para saber y determinar el número de parámetros que se le 
-             darán al procedimiento almacenado.*/
-                    miProcedimiento.setInt(1,parametro1);
-                    miProcedimiento.setString(2,parametro2);
-                    miProcedimiento.setInt(3,Parametro3);
-               
-             miProcedimiento.execute();
-             return miProcedimiento.getResultSet();
-             
-                 }catch(Exception ee)
-                 {}
-           return null;
-    }
+   
     
     
     public ResultSet EjecutarProcedimietoFullParametros(String nombre, String [] ArregloParametroValor)

@@ -54,7 +54,6 @@ function cambioNivel(){
                 codigo:$("#cboNivel").val()
             },//reques evia el parametro que digito
             success: function (data) {
-                //alert(data);
                 var str="";
                 str = "<label class=\"col-sm-2 col-sm-2 control-label\">Padre</label>\n" +
 "                        <div class=\"col-xs-5 selectContainer\">\n" +
