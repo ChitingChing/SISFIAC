@@ -55,16 +55,21 @@ function cambioNivel(){
             },//reques evia el parametro que digito
             success: function (data) {
                 //alert(data);
-                $("#contPadre").append("<label class=\"col-sm-2 col-sm-2 control-label\">Nivel</label>\n" +
+                var str="";
+                str = "<label class=\"col-sm-2 col-sm-2 control-label\">Padre</label>\n" +
 "                        <div class=\"col-xs-5 selectContainer\">\n" +
-"                            <select class=\"form-control\" name=\"cboPadre\" id=\"cboPadre\">\n");
+"                            <select class=\"form-control\" name=\"cboPadre\" id=\"cboPadre\">\n";
+            if(data != ""){
                 var parsed = JSON.parse(data);
                 for (var i = 0; i < parsed.length; i++) {
-                         $("#contPadre").append("<option value=\""+parsed[i].id+"\">"+parsed[i].nombre+"</option>\n"); 
+                         str += "<option value=\""+parsed[i].id+"\">"+parsed[i].nombre+"</option>\n"; 
                       }
-                        $("#tablaProveedor").append("</select>\n" +
-"                        </div>");
-                                
+                }else{
+                    str +="<option value=\"-1\">(No hay datos)</option>\n"; 
+                }
+                        str +="</select>\n" +
+"                        </div>";
+                         $("#contPadre").append(str);
                            // response(parsed);
                         },error: function (message) {
                         response([]);
@@ -82,7 +87,7 @@ function registrarPadre(){
                 nombre: $("#txtPadreNombre").val()
             },//reques evia el parametro que digito
             success: function (data) {
-                           alert("Datos Ingresados Correctamente");
+                           alert(data);
                         },error: function (message) {
                         response([]);
                     }

@@ -46,7 +46,7 @@ public class obtenerPermisoPadres extends HttpServlet {
             conex.Conectar();
             
             try {
-                rs = conex.EjecuatarProcedimieto("obtener_Padres");
+                rs = conex.EjecutarProcedimieto("obtener_Padres");
                 while(rs.next()){
                     jsObj.put("id", rs.getObject(1));
                     jsObj.put("nombre", rs.getObject(2));

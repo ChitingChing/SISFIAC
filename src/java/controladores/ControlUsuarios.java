@@ -42,7 +42,7 @@ public class ControlUsuarios extends HttpServlet {
             boolean band = false;
             try {
                 //comparando datos                                     
-                resultado = conex.EjecuatarProcedimietoFullParametros("usuario_acceso", param);
+                resultado = conex.EjecutarProcedimietoFullParametros("usuario_acceso", param);
                 while(resultado.next()){
                     //Parametros de la bd para guardar en la sesion
                     request.getSession().setAttribute("Cedula",resultado.getString(3));//Cedula del usuario

@@ -135,7 +135,7 @@ public class Conexion
         else
         return null;
     }
-    public ResultSet EjecuatarProcedimieto(String nombre)
+    public ResultSet EjecutarProcedimieto(String nombre)
     {
            String SQL="{call ";
            String Num_Parametro=" (";
@@ -158,7 +158,7 @@ public class Conexion
            return null;
     }
     
-    public ResultSet EjecuatarProcedimieto(String nombre,String Parametro1)
+    public ResultSet EjecutarProcedimieto(String nombre,String Parametro1)
     {
            String parametro1=Parametro1;
            String SQL="{call ";
@@ -191,7 +191,7 @@ public class Conexion
                  {}
            return null;
     }
-    public ResultSet EjecuatarProcedimietoDosParametros(String nombre,String Parametro1, String parametro2)
+    public ResultSet EjecutarProcedimietoDosParametros(String nombre,String Parametro1, String parametro2)
     {
            String parametro1=Parametro1;
            String SQL="{call ";
@@ -227,7 +227,7 @@ public class Conexion
     }
     
     
-    public ResultSet EjecuatarProcedimietoFullParametros(String nombre, String [] ArregloParametroValor)
+    public ResultSet EjecutarProcedimietoFullParametros(String nombre, String [] ArregloParametroValor)
     {
            String complemento=" (";
            String nombre_procedimiento= nombre;
@@ -269,7 +269,8 @@ public class Conexion
               
                  }catch(Exception ee)
                  {
-                    Estado="Error";
+                     setEstado_BD(ee.toString());
+                    //Estado="Error";
                     //JOptionPane.showMessageDialog(null, "Error "+ee);
                  }
                  UnaC.Cerrar();
