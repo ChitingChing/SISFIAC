@@ -154,8 +154,9 @@ public class Conexion
              return miProcedimiento.getResultSet();
              
                  }catch(Exception ee)
-                 {}
-           return null;
+                 {
+                     return null;
+                 }
     }
     
     public ResultSet EjecutarProcedimieto(String nombre,String Parametro1)

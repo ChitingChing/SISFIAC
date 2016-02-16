@@ -18,5 +18,7 @@ footer, .wrapper:after{
 .cursor{
     cursor: pointer;
 }
-
+.icon-right{
+    margin-left: 25px;
+}
 
