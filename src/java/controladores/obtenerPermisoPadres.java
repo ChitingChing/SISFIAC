@@ -44,10 +44,11 @@ public class obtenerPermisoPadres extends HttpServlet {
             JSONArray jsArray = new JSONArray();
             Conexion conex = new Conexion();
             conex.Conectar();
-            
+            boolean band= false;
             try {
                 rs = conex.EjecutarProcedimieto("obtener_Padres");
                 while(rs.next()){
+                    band = true;
                     jsObj.put("id", rs.getObject(1));
                     jsObj.put("nombre", rs.getObject(2));
                     jsArray.add(jsObj);

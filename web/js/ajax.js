@@ -58,14 +58,13 @@ function cambioNivel(){
                 str = "<label class=\"col-sm-2 col-sm-2 control-label\">Padre</label>\n" +
 "                        <div class=\"col-xs-5 selectContainer\">\n" +
 "                            <select class=\"form-control\" name=\"cboPadre\" id=\"cboPadre\">\n";
-            if(data != ""){
                 var parsed = JSON.parse(data);
                 for (var i = 0; i < parsed.length; i++) {
                          str += "<option value=\""+parsed[i].id+"\">"+parsed[i].nombre+"</option>\n"; 
                       }
-                }else{
-                    str +="<option value=\"-1\">(No hay datos)</option>\n"; 
-                }
+                    if(parsed.length <= 0)
+                        str +="<option value=\"-1\">(No hay datos)</option>\n"; 
+                        
                         str +="</select>\n" +
 "                        </div>";
                          $("#contPadre").append(str);
@@ -78,19 +77,32 @@ function cambioNivel(){
 }
 
 function registrarPadre(){
+    
+    var nombre="";
+    var codigo="";
+    if($("#cboNivel").val() == 0){
+        nombre = $("#txtPadreNombre").val();
+        codigo = $("#cboNivel").val();
+    }else{
+        nombre = $("#txtHijoNombre").val();
+        codigo = $("#cboPadre").val();
+    }
+    
     $.ajax({
             url: "../registrarPermisos.dbo",
             dataType: "text",
             data: {
-                codigo:$("#cboNivel").val(),
-                nombre: $("#txtPadreNombre").val()
+                codigo:codigo,//Nivel
+                orden: $("#cboOrden").val(),//Orden
+                nombre: nombre
             },//reques evia el parametro que digito
             success: function (data) {
-                           if(data == "ok"){
+                           if(data.toString() === "ok"){
+                               alert("Error al ingresar Datos");
+                           }else{
                                alert("Datos Ingresados Correctamente");
                                $("#txtPadreNombre").val("");
-                           }else{
-                               alert("Error al ingresar Datos");
+                               $("#txtHijoNombre").val("");
                            }
                             
                         },error: function (message) {

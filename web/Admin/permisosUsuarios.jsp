@@ -36,6 +36,20 @@
                             </select>
                         </div>
                   </div>
+                  <div class="form-group">
+                      <label class="col-sm-2 col-sm-2 control-label">Orden</label>
+                        <div class="col-xs-5 selectContainer">
+                            <select class="form-control" name="cboOrden" id="cboOrden">
+                                <%
+                                    int i =0;
+                                    while(i<20){
+                                 %>
+                                 <option value=<%=(i+1)%>><%=(i+1)%></option>
+                                <%i++;}%>
+                            </select>
+                        </div>
+                  </div>  
+                    
                   <div class="form-group" id="contPadre">
                           <label class="col-sm-2 col-sm-2 control-label">Descripciòn</label>
                             <div class="col-sm-10">

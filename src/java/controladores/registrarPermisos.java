@@ -39,11 +39,13 @@ public class registrarPermisos extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String codigo = request.getParameter("codigo").toString();
             String nombre = request.getParameter("nombre").toString().toUpperCase();
+            String orden = request.getParameter("orden").toString();
             
             Conexion conex = new Conexion();
             conex.Conectar();
             ResultSet resultado;
-            String [] param = {codigo,nombre,"1"};
+            
+            String [] param = {codigo,nombre,orden};
             String [] paramTipo = {"int","string","int"};
             
             resultado = conex.EjecutarProcedimietoFullParametrosxTipoValor("registrar_permisos", param, paramTipo);

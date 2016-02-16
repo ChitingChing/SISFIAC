@@ -21,8 +21,8 @@ public class Conexion
     public String Estado="";
     //public String URL="jdbc:mysql://10.1.1.25:3306/";jdbc:postgresql://127.0.0.1/test
     //Caleta
-    //public String URL="jdbc:postgresql://localhost:5432/"; 
-    public String URL="jdbc:postgresql://170.10.3.49:5432/";//Postgrado
+    public String URL="jdbc:postgresql://localhost:5432/"; 
+    //public String URL="jdbc:postgresql://170.10.3.49:5432/";//Postgrado
     //public String URL="jdbc:mysql://172.16.26.200:3306/";
     private Statement Ejecutor;
     private ResultSet Resultado;
