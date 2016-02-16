@@ -96,17 +96,19 @@ function cambioUsuario(){
 "                                            <a class=\"panel-title collapsed menu-collapse\" data-toggle=\"collapse\" data-parent=\"#panel-izquierdo\" href=\"#panel-element-"+i+"\">\n" +
 "                                                 "+parsed[i].nombre+"    <span class=\"glyphicon glyphicon-collapse-down icon-right\"></span></a>\n" +
 "                                    </div>\n";
+                        str += "<div id=\"panel-element-"+i+"\" class=\"panel-collapse collapse\">\n";
                     }
                          for (var j = 0; j < parsed.length; j++) {
                              if(parsed[i].id == parsed[j].padre){
-                                 str += "<div id=\"panel-element-"+i+"\" class=\"panel-collapse collapse\">\n" +
-"                                            <div class=\"panel-body icon-right\">\n" +
+                                 
+                                        str +="<div class=\"panel-body icon-right\">\n" +
 "                                                <input type=\"checkbox\" value=\"\"> <a class=\"cursor\" onclick=\"cargar_Datos_Ajax('#cargar_Ajax','movimientos_Usuarios','usuarioNuevoVentas')\">"+parsed[j].nombre+"</a>\n" +
-"                                            </div>\n" +
-"                                    </div>"; 
+"                                            </div>\n";
+                                     
                              }
-                                   
+                                 
                          }
+                         str += "</div>";  
                       }
                     if(parsed.length <= 0){
                         //str +="<option value=\"-1\">(No hay datos)</option>\n"; 
