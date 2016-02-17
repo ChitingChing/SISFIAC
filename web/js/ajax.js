@@ -91,8 +91,8 @@ function cambioUsuario(){
                 var parsed = JSON.parse(data);
                 for (var i = 0; i < parsed.length; i++) {
                     if(parsed[i].padre == 0){
-                        str += "<div id=\""+parsed[i].id+"\" class=\"panel-heading\">\n" +
-"                                            <input type=\"checkbox\" onchange=\"seleccionPardre("+parsed[i].id+");\" name=\"chk\" id=\"chk\"  value=\""+parsed[i].id+"\">\n" +
+                        str += "<div class=\"panel-heading\">\n" +
+"                                            <input class=\""+parsed[i].id+"\" type=\"checkbox\" onchange=\"seleccionPardre("+parsed[i].id+");\" name=\"chk\" id=\"chk\"  value=\""+parsed[i].id+"\">\n" +
 "                                            <a class=\"panel-title collapsed menu-collapse\" data-toggle=\"collapse\" data-parent=\"#panel-izquierdo\" href=\"#panel-element-"+i+"\">\n" +
 "                                                 "+parsed[i].nombre+"    <span class=\"glyphicon glyphicon-collapse-down icon-right\"></span></a>\n" +
 "                                    </div>\n";
@@ -101,8 +101,8 @@ function cambioUsuario(){
                          for (var j = 0; j < parsed.length; j++) {
                              if(parsed[i].id == parsed[j].padre){
                                  
-                                        str +="<div id=\""+parsed[i].id+"\" class=\"panel-body icon-right\">\n" +
-"                                                <input type=\"checkbox\" onchange=\"seleccionPardre("+parsed[i].id+");\" name=\"chk id=\"chk\"  value=\""+parsed[j].id+"\"> <a class=\"cursor\">"+parsed[j].nombre+"</a>\n" +
+                                        str +="<div class=\"panel-body icon-right\">\n" +
+"                                                <input class=\""+parsed[i].id+"\" type=\"checkbox\" name=\"chk id=\"chk\"  value=\""+parsed[j].id+"\"> <a class=\"cursor\">"+parsed[j].nombre+"</a>\n" +
 "                                            </div>\n";
                                      
                              }
@@ -127,7 +127,35 @@ function cambioUsuario(){
 }
 //Funcion para seleccionar padre y de una se asignen permisos para hijo y viceversa
 function seleccionPardre(id){
-    alert($("#chk").length);
+    
+    if($( "."+id).length>0){
+        for (var i = 0; i < $( "."+id).length-1; i++) {
+            
+            if($( "."+id)[0].checked){
+                $( "."+id)[i+1].checked= true;
+                guardarPermisoUsuarios($( "."+id)[i+1].value,1);
+            }
+            else{
+                $( "."+id)[i+1].checked= false;
+                guardarPermisoUsuarios($( "."+id)[i+1].value,0);
+            }
+        }
+    }
+}
+
+function guardarPermisoUsuarios(id,estado){
+    $.ajax({
+            url: "../registrarPermisosxUsuarios.dbo",
+            dataType: "text",
+            data: {
+                permisoId:id,
+                permisoUs:$("#cboUsuario").val(),
+                estado:estado
+            },//reques evia el parametro que digito
+            success: function (data) {
+                
+            }
+             });
 }
 
 
