@@ -392,7 +392,7 @@
                         <div class="col-md-12">
                             <!--earning graph start-->
                             <section class="panel">
-                                <header class="panel-heading">
+                                <header class="panel-heading encabezado">
                                     Movimientos
                                 </header>
                                 <div class="panel-body">

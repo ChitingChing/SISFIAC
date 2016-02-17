@@ -46,17 +46,36 @@ public class obtener_arbol_permisos extends HttpServlet {
             JSONArray jsArray = new JSONArray();
             Conexion conex = new Conexion();
             conex.Conectar();
-           
+            
+            String [] param = {codigo};
+            String [] paramTipo = {"int"};
+            boolean band = true;
             try {
-                rs = conex.EjecutarProcedimieto("obtener_arbol_permisos");
-                while(rs.next()){
+            //Si el usuario Tiene Permisos Asignados
+            rs = conex.EjecutarProcedimietoFullParametrosxTipoValor("obtener_arbol_permisoDetalles", param, paramTipo);
+            while(rs.next()){
+                    band = false;
                     jsObj.put("id", rs.getObject(1));
                     jsObj.put("nombre", rs.getObject(2));
                     jsObj.put("padre", rs.getObject(3));
                     jsObj.put("orden", rs.getObject(4));
                     jsObj.put("estado", rs.getObject(5));
                     jsArray.add(jsObj);
+            }
+            //conex.Conectar();
+                //Si el usuario no tiene ningun permiso asignado
+                if(band){
+                    rs = conex.EjecutarProcedimieto("obtener_arbol_permisos");
+                    while(rs.next()){
+                        jsObj.put("id", rs.getObject(1));
+                        jsObj.put("nombre", rs.getObject(2));
+                        jsObj.put("padre", rs.getObject(3));
+                        jsObj.put("orden", rs.getObject(4));
+                        jsObj.put("estado", rs.getObject(5));
+                        jsArray.add(jsObj);
+                    }
                 }
+                
                 out.println(jsArray);
             } catch (Exception ex) {
                 

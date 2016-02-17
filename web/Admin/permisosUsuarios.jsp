@@ -3,7 +3,7 @@
 <ul class="nav nav-tabs">
     <li class="active">
         <a data-toggle="tab" href="#home-2">
-            <i class="fa fa-home"></i>
+            <i class="fa fa-home">Asignar/Quitar</i>
         </a>
     </li>
     <li>
@@ -14,8 +14,8 @@
     </li>
     <li class="">
         <a data-toggle="tab" href="#contact-2">
-            <i class="fa fa-remove"></i>
-            Eliminar
+            <i class="fa fa-edit"></i>
+            Edición
         </a>
     </li>
 </ul>
@@ -117,7 +117,7 @@
         </div>
         <!--Eliminacion de permisos-->
         <div id="contact-2" class="tab-pane ">
-            Eliminar
+            Edición
         </div>
     </div>
 </div>
