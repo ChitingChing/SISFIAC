@@ -20,5 +20,51 @@ footer, .wrapper:after{
 }
 .icon-right{
     margin-left: 25px;
+.datos{
+    width: 800px;
+    margin:  auto;
+    padding: 0 15px;
+    border-bottom: none;
+    border: 1px silver groove;
+}
+.legend{
+    width:auto;
+    margin: 0;
+    padding:0 10px;
+    border-bottom:none;
+}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+img{
+    width: 200px;
+    height: 200px;
+}
+
+.derecha{
+    float: right;
+}
+.izquierda{
+    float: left;
+    
+}
+.limpiar-izq{
+    clear: left;
 }
 
