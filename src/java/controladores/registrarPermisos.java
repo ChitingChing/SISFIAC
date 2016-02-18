@@ -47,7 +47,7 @@ public class registrarPermisos extends HttpServlet {
             conex.Conectar();
             ResultSet resultado;
             String dir ="";
-            dir = "CargarPaginaURL("+contenedor+","+ruta+")";
+            dir = "CargarPaginaURL('"+contenedor+"','"+ruta+"')";
             
             String [] param = {codigo,nombre,orden,dir};
             String [] paramTipo = {"int","string","int","string"};
