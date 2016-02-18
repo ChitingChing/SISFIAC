@@ -40,7 +40,7 @@
                                     while(rs.next()){
                                     band= false;    
                                 %>1
-                                <option value=<%=rs.getObject(1)%>><%=rs.getString(2)%> <%=rs.getString(3)%> (<%=rs.getString(4)%>)</option>
+                                <option value=<%=rs.getObject(1)%>><%=rs.getString(2).toString().toUpperCase()%> <%=rs.getString(3).toString().toUpperCase()%> (<%=rs.getString(4).toString().toUpperCase()%>)</option>
                                 <%} 
                                     if(band){
                                 %>
