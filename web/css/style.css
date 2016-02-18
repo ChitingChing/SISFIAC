@@ -21,8 +21,36 @@ footer, .wrapper:after{
 .icon-right{
     margin-left: 25px;
 }
+.titulo{
+    text-align: center;
+    margin-top: 100px;
+}
+.elegir-maestria{
+/*    display: table;   
+    width: 700px;
+    margin: auto;
+    height: auto;*/
+ width: 700px;
+ margin: auto;
+ height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.elegir-maestria>*{
+/*   display: table-cell;
+   vertical-align: middle;   */
+margin: 0;
+   
+}
+.elegir-maestria>select{
+    width: 75%;
+}
+.elegir-maestria>label{
+    margin-right:  15px;    
+}
 .datos{
-    width: 800px;
+    width: 700px;
     margin:  auto;
     padding: 0 15px;
     border-bottom: none;
@@ -63,6 +91,8 @@ img{
 }
 .izquierda{
     float: left;
+    margin-right: 10px;
+    width: 200px;
     
 }
 .limpiar-izq{

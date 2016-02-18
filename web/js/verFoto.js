@@ -3,40 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$(document).ready( function() {
-    	$(document).on('change', '.btn-file :file', function() {
-		var input = $(this),
-			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-		input.trigger('fileselect', [label]);
-		});
-
-		$('.btn-file :file').on('fileselect', function(event, label) {
-		    
-		    var input = $(this).parents('.input-group').find(':text'),
-		        log = label;
-		    
-		    if( input.length ) {
-		        input.val(log);
-		    } else {
-		        if( log ) alert(log);
-		    }
-	    
-		});
-		function readURL(input) {
-		    if (input.files && input.files[0]) {
-		        var reader = new FileReader();
-		        
-		        reader.onload = function (e) {
-		            $('#img-upload').attr('src', e.target.result);
-		        }
-		        
-		        reader.readAsDataURL(input.files[0]);
-		    }
-		}
-
-		$("#imgInp").change(function(){
-		    readURL(this);
-		}); 
-            
-	});
+$(document).ready(function () {
+    $("#avatar").fileinput({
+        overwriteInitial: true,
+        maxFileSize: 1500,
+        showClose: false,
+        showCaption: false,
+        browseLabel: '',
+        removeLabel: '',
+        browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+        removeTitle: 'Cancel or reset changes',
+        elErrorContainer: '#kv-avatar-errors',
+        msgErrorClass: 'alert alert-block alert-danger',
+        defaultPreviewContent: '<img src="../../img/user.jpg" alt="Your Avatar" style="width:160px">',
+        layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
+        allowedFileExtensions: ["jpg", "png"]
+    });
+});
 
