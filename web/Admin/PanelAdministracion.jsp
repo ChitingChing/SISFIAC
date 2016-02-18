@@ -4,6 +4,11 @@
     Author     : Usuario08
 --%>
 
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="java.sql.Array"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="AccesoDatos.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -304,41 +309,74 @@
                                         <i class="fa fa-home"></i> <span>Inicio</span>
                                     </a>
                                 </li>
+                                <%
+                                  if(session.getAttribute("rol") != null){
+                                    if(session.getAttribute("rol").equals("Administrador")){
+                                %>
                                 <li>
                                     <a class="cursor" onclick="CargarPaginaInterna('cargar_Elementos','permisosUsuarios')">
                                         <i class="fa fa-globe"></i> <span>Permisos</span>
                                     </a>
                                 </li>
-                                <!--<li >
-                                    <a class="cursor" onclick="CargarPaginaExterna('cargar_Elementos','Modulo/Academico','registrarDocente')">
-                                        <i class="fa fa-user"></i> <span>Registro de Docentes</span>
-                                    </a>
-                                </li>
-                                <li >
-                                    <a href="#">
-                                        <i class="fa fa-dashboard"></i> <span>Registro de Asistencias</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-gavel"></i> <span>Registro de Calificaciones</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-globe"></i> <span>Ajustes</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-glass"></i> <span>Reportes</span>
-                                    </a>
-                                </li>-->
-                                
+                                <%}}%>
 
                             </ul>
+                             <!--Menu dinamico Por usuarios-->
+                             <div id="cargarMenuUsuarios">
+                             <%! 
+                                 int i = 0, j=0;
+                                 ResultSet rs;
+                                 ArrayList padre = new ArrayList();
+                                 ArrayList nombre = new ArrayList();
+                                 ArrayList urls = new ArrayList();
+                                 ArrayList _id = new ArrayList();
+                             %>
+                            <%
+                                padre.clear();
+                                nombre.clear();
+                                urls.clear();
+                                _id.clear();
+                                    Conexion conex = new Conexion();
+                                    conex.Conectar();
+                                    
+                                    String valor =  session.getAttribute("id").toString();
+                                    String [] param = {valor};
+                                    String [] paramTipo = {"int"};
+                                     try {
+                                 rs = conex.EjecutarProcedimietoFullParametrosxTipoValor("obtenerMenuNavUsuario", param, paramTipo);
+                                 
+                                 while(rs.next()){
+                                     padre.add(rs.getInt(1));
+                                     nombre.add(rs.getString(2));
+                                     urls.add(rs.getString(3));
+                                     _id.add(rs.getInt(4));
+                                 }
+                                     }catch (Exception e) {
+            }%>
+                                    
+                            <%
+                                for(i = 0;i<padre.size();i++){
+                                if(Integer.parseInt(padre.get(i).toString())==0){    
+                                 
+                            %>
+                                    <ul class="sidebar-menu">
+                                        <li>
+                                            <a class="panel-title collapsed menu-collapse" data-toggle="collapse" data-parent="#panel-izquierdo" href="#panel-element<%=i%>">
+                                                <!--<span class="glyphicon glyphicon-user icon-leftP"></span>--><%=nombre.get(i).toString()%><span class="glyphicon glyphicon-collapse-down icon-rightP"></span></a>
+                                        </li>
+                                    </ul>
+                                                <div id="panel-element<%=i%>" class="panel-collapse collapse">
+                            <%
+                                for(j = 0;j<padre.size();j++){
+                                    if(Integer.parseInt(_id.get(i).toString())==Integer.parseInt(padre.get(j).toString())){%>
+                                        <div class="panel-body">
+                                            <a class="cursor" onclick="<%=urls.get(j)%>"><%=nombre.get(j).toString()%></a>
+                                        </div>
+                            <%}}%>
+                                </div>
+                            <%}}%>
+                            </div>
+                           <!--Fin del Menu dinamico-->
                         </section>
                         <!-- /.sidebar -->
                     </aside>
