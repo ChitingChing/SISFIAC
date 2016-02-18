@@ -77,6 +77,7 @@ function cambioNivel(){
 }
 function cambioUsuario(){
     //obtener_arbol_permisos.dbo
+    var _estado = false;
     $("#contArbolPermisos").html('<div><center><img src="../img/ajax-loader.gif"/></center></div>');
     if($("#cboUsuario").val() != "-1"){
         $.ajax({
@@ -100,13 +101,17 @@ function cambioUsuario(){
                     }
                          for (var j = 0; j < parsed.length; j++) {
                              if(parsed[i].id == parsed[j].padre){
-                                 
-                                        str +="<div class=\"panel-body icon-right\">\n" +
-"                                                <input class=\""+parsed[i].id+"\" type=\"checkbox\" name=\"chk id=\"chk\"  value=\""+parsed[j].id+"\"> <a class=\"cursor\">"+parsed[j].nombre+"</a>\n" +
+                                 if(parsed[j].estado == 10){
+                                    str +="<div class=\"panel-body icon-right\">\n" +
+"                                                <input class=\""+parsed[i].id+"\" type=\"checkbox\" onchange=\"seleccionHijo("+parsed[i].id+",this);\" checked=\"true\" name=\"chk id=\"chk\"  value=\""+parsed[j].id+"\"> <a class=\"cursor\">"+parsed[j].nombre+"</a>\n" +
 "                                            </div>\n";
-                                     
+                                 }
+                                 else{
+                                     str +="<div class=\"panel-body icon-right\">\n" +
+"                                                <input class=\""+parsed[i].id+"\" type=\"checkbox\" onchange=\"seleccionHijo("+parsed[i].id+",this);\" name=\"chk id=\"chk\"  value=\""+parsed[j].id+"\"> <a class=\"cursor\">"+parsed[j].nombre+"</a>\n" +
+"                                            </div>\n";
+                                 }
                              }
-                                 
                          }
                          str += "</div>";  
                       }
@@ -129,6 +134,8 @@ function cambioUsuario(){
 function seleccionPardre(id){
     
     if($( "."+id).length>0){
+        //Padre
+        guardarPermisoUsuarios($( "."+id)[0].value,1);
         for (var i = 0; i < $( "."+id).length-1; i++) {
             
             if($( "."+id)[0].checked){
@@ -141,6 +148,17 @@ function seleccionPardre(id){
             }
         }
     }
+}
+//Volveremos
+//Falta Guardar Padre
+function seleccionHijo(id,estado){
+   var _estado = "";
+   //Padre
+   guardarPermisoUsuarios($( "."+id)[0].value,1);
+   if(estado.checked)
+        guardarPermisoUsuarios(estado.value,1);
+    else
+        guardarPermisoUsuarios(estado.value,0);
 }
 
 function guardarPermisoUsuarios(id,estado){

@@ -41,6 +41,7 @@
     <!-- Theme style -->
     <link href="../css/styleAdmin.css" rel="stylesheet" type="text/css" />
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/styleLG.css" rel="stylesheet" type="text/css" />
     <script src="../js/ajax.js" type="text/javascript"></script>
     <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
