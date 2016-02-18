@@ -9,6 +9,7 @@ import AccesoDatos.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,38 +43,44 @@ public class obtener_arbol_permisos extends HttpServlet {
            //Falta Validar si el usuario ya tiene permisos en detalle_usuario
             String codigo = request.getParameter("codigo");
             ResultSet rs = null;
+            ResultSet rs1 = null;
             JSONObject jsObj = new JSONObject();
             JSONArray jsArray = new JSONArray();
+            
+            JSONObject jsObj1 = new JSONObject();
+            JSONArray jsArray1 = new JSONArray();
             Conexion conex = new Conexion();
             conex.Conectar();
             
-            String [] param = {codigo};
-            String [] paramTipo = {"int"};
+            String str = "";
+            
+            String [] paramTipo = {"int","int"};
             boolean band = true;
             try {
             //Si el usuario Tiene Permisos Asignados
-            rs = conex.EjecutarProcedimietoFullParametrosxTipoValor("obtener_arbol_permisoDetalles", param, paramTipo);
-            while(rs.next()){
-                    band = false;
-                    jsObj.put("id", rs.getObject(1));
-                    jsObj.put("nombre", rs.getObject(2));
-                    jsObj.put("padre", rs.getObject(3));
-                    jsObj.put("orden", rs.getObject(4));
-                    jsObj.put("estado", rs.getObject(5));
-                    jsArray.add(jsObj);
-            }
-            //conex.Conectar();
-                //Si el usuario no tiene ningun permiso asignado
-                if(band){
+            
+            
                     rs = conex.EjecutarProcedimieto("obtener_arbol_permisos");
                     while(rs.next()){
-                        jsObj.put("id", rs.getObject(1));
+                        jsObj.put("id", rs.getInt(1));
                         jsObj.put("nombre", rs.getObject(2));
                         jsObj.put("padre", rs.getObject(3));
                         jsObj.put("orden", rs.getObject(4));
-                        jsObj.put("estado", rs.getObject(5));
+                        String [] param = {codigo, String.valueOf(rs.getInt(1))};
+                        if(rs.getInt(3) > 0){
+                            rs1 = conex.EjecutarProcedimietoFullParametrosxTipoValor("obtener_arbol_permisoDetalles", param, paramTipo);
+                            while(rs1.next()){
+                                band = false;
+                                jsObj.put("estado", rs1.getObject(1)+"0");
+                            }
+                            
+                        }
+                            if(band){
+                                jsObj.put("estado", rs.getObject(5));
+                            }
+                            band = true;
                         jsArray.add(jsObj);
-                    }
+                        
                 }
                 
                 out.println(jsArray);

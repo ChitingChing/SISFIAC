@@ -45,7 +45,7 @@ public class ControlUsuarios extends HttpServlet {
                 resultado = conex.EjecutarProcedimietoFullParametros("usuario_acceso", param);
                 while(resultado.next()){
                     //Parametros de la bd para guardar en la sesion
-                    request.getSession().setAttribute("Cedula",resultado.getString(3));//Cedula del usuario
+                    request.getSession().setAttribute("id",resultado.getString(3));//Cedula del usuario
                     request.getSession().setAttribute("usuario", resultado.getString(1)+" "+resultado.getString(2));//Nombre del usuario
                     request.getSession().setAttribute("rol", resultado.getString(4));//Rol del usuario
                     request.getSession().setAttribute("estado", "ok");
