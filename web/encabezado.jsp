@@ -59,7 +59,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><span> <%=session.getAttribute("usuario")%></span> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="Admin/PanelAdministracion.jsp"><i class="fa fa-cog fa-fw pull-left"></i> Administración</a>
+                        <a href="/SISFIAC/Admin/PanelAdministracion.jsp"><i class="fa fa-cog fa-fw pull-left"></i> Administración</a>
                     </li>
                     <li>
                         <a href="cerrarSesion.dbo"><i class="fa fa-ban fa-fw pull-left"></i> Salir</a>
@@ -69,7 +69,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><span> <%=session.getAttribute("usuario")%></span> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="Admin/PanelUsuarioDocente.jsp"><i class="fa fa-cog fa-fw pull-left"></i> Administración</a>
+                        <a href="/SISFIAC/Admin/PanelUsuarioDocente.jsp"><i class="fa fa-cog fa-fw pull-left"></i> Administración</a>
                     </li>
                     <li>
                         <a href="cerrarSesion.dbo"><i class="fa fa-ban fa-fw pull-left"></i> Salir</a>
