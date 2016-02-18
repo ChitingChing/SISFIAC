@@ -17,6 +17,7 @@
         <!-- Bootstrap Core CSS -->
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/style.css" rel="stylesheet">
+        <link href="../../css/datepicker3.css" rel="stylesheet">
         <!-- Custom CSS
         <link href="css/modern-business.css" rel="stylesheet"> 
         Custom Fonts 
@@ -47,26 +48,36 @@
             <%@include file="../../encabezado.jsp" %>
             <h1 class="titulo">Solicitud de Inscripción</h1>
             <form role="form" action="" method="post" data-fv-message="NO" enctype="multipart/form-data">
-                
+
                 <div class="elegir-maestria">                   
                     <label for="cmb_Maestria"  >Maestría: </label>
-                    <select class="form-control " >
-                    <option>Maestrá en Marroneo</option>
+                    <select id="cmb_Maestria" class="form-control " >
+                        <option selected>Maestrá en Marroneo</option>
                     </select>
                 </div>
-                
+
                 <fieldset class="form-group datos">
                     <legend class="legend">Datos Personales</legend>
                     <div class="izquierda">
                         <label class="izquierda" for="txt_Ced">Cédula o Pasaporte: </label>
                         <input id="txt_Ced" class="form-control izquierda" type="text" pattern="[0-9]+" required>
                     </div>
+                    <div class="izquierda">
+                        <label class="izquierda" for="cmb_Est">Estado Civil: </label>
+                        <select id="cmb_Est" class="form-control "  >
+                            <option selected>Soltero</option>
+                            <option>Casado</option>
+                            <option>Divorciado</option>
+                            <option>Viudo</option>
+                            <option>Union Libre</option>
+                        </select>
+                    </div>
 
                     <div class="derecha" style="text-align: center">                        
                         <div class="kv-avatar center-block" style="width:200px">
                             <input id="avatar" name="avatar" type="file" class="file-loading">
                         </div>
-                        <div id="kv-avatar-errors" class="center-block" style="width:200px;display:none;"></div>
+                        <div id="kv-avatar-errors" class="center-block" style="width:200px;display:none;margin-top: 5px;"></div>
                     </div> 
 
                     <div class="izquierda limpiar-izq">
@@ -86,13 +97,54 @@
                         <input id="txt_Cel" class="form-control" pattern="[0-9]{10}">
                     </div>
                     <div class="izquierda limpiar-izq">
-                        <label for="ckb_SexM">Sexo: </label>
-                        <input id="ckb_SexM" name="sexo" type="radio"  value="M" >Masculino <br>
-                        <input id="ckb_SexF" name="sexo" type="radio" value="F" >Femenino
+                        <label >Sexo: </label>
+                        <div>
+                            <input id="ckb_SexM" name="sexo" type="radio" required value="M" ><label for="ckb_SexM">Masculino</label> <br>
+                            <input id="ckb_SexF" name="sexo" type="radio" required value="F" ><label for="ckb_SexF">Femenino</label>
+                        </div>
                     </div>
+
+                </fieldset>
+                
+                <fieldset class="form-group datos">
+                    <legend class="legend">Datos de Nacimiento</legend>
+                    <%--datos de nacimiento --%>
+                    <div class="izquierda">
+                        <label class="izquierda" for="cmb_Pais_Origen">País: </label>
+                        <select id="cmb_Pais_Origen" class="form-control izquierda"  >
+                            <option selected>Ecuador</option>
+                            <option>Extranjero</option>                            
+                        </select>
+                    </div>  
+                    <div class="izquierda">
+                        <label for="txt_Fecha_Nac">Fecha de Nacimiento: </label>
+                        <input id="txt_Fecha_Nac" class="form-control datepicker" type="text" >
+                    </div>
+                    <div class="izquierda limpiar-izq">
+                        <label class="izquierda" for="cmb_Prov_Nac">Provincia: </label>
+                        <select id="cmb_Prov_Nac" class="form-control izquierda"  >
+                            <option selected>Ecuador</option>
+                            <option>Extranjero</option>                            
+                        </select>
+                    </div>  
+                    <div class="izquierda">
+                        <label class="izquierda" for="cmb_Can_Nac">Cantón: </label>
+                        <select id="cmb_Can_Nac" class="form-control izquierda"  >
+                            <option selected>Ecuador</option>
+                            <option>Extranjero</option>                            
+                        </select>
+                    </div>  
+                    <div class="izquierda">
+                        <label class="izquierda" for="cmb_Parr_Nac">Parroquia: </label>
+                        <select id="cmb_Parr_Nac" class="form-control izquierda"  >
+                            <option selected>Ecuador</option>
+                            <option>Extranjero</option>                            
+                        </select>
+                    </div> 
+
                 </fieldset>
                 <button class="btn btn-primary" type="submit">Enviar</button>
-               
+
             </form>
         </div>  
         <%@include file="../../piePagina.jsp" %>
