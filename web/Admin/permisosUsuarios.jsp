@@ -109,7 +109,7 @@
                   <div class="form-group" id="contHijo1" style="display: none;">
                       <label class="col-sm-2 col-sm-2 control-label">Contenedor</label>
                         <div class="col-sm-4">
-                            <input type="text" name="txtConten" maxlength="250" placeholder="(Nombre del Contenedor)" id="txtForm" class="form-control">
+                            <input type="text" name="txtConten" maxlength="250" placeholder="(Nombre del Contenedor)" id="txtConten" class="form-control">
                        </div>
                       <label class="col-sm-2 col-sm-2 control-label">Formulario</label>
                         <div class="col-sm-4">

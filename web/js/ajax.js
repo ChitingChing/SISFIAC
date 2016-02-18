@@ -194,7 +194,6 @@ function registrarPadre(){
         nombre = $("#txtHijoNombre").val();
         codigo = $("#cboPadre").val();
     }
-    
     $.ajax({
             url: "../registrarPermisos.dbo",
             dataType: "text",
