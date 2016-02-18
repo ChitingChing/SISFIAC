@@ -19,53 +19,55 @@
         <link href="../../css/style.css" rel="stylesheet">
         <!-- Custom CSS
         <link href="css/modern-business.css" rel="stylesheet"> 
-        <!-- Custom Fonts -->
-        <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="../../css/style.css" rel="stylesheet" type="text/css" />
-        <script src="../../js/ajax.js" type="text/javascript"></script>
-        <!-- jQuery 2.0.2 -->
-<style>
-.kv-avatar .file-preview-frame,.kv-avatar .file-preview-frame:hover {
-    margin: 0;
-    padding: 0;
-    border: none;
-    box-shadow: none;
-    text-align: center;
-}
-.kv-avatar .file-input {
-    display: table-cell;
-    max-width: 220px;
-}
-</style>
-
-        <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+        Custom Fonts 
+        <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">        
+        <script src="../../js/ajax.js" type="text/javascript"></script> --> 
+        <link href="../../css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="../../js/fileinput.min.js" type="text/javascript"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/verFoto.js"></script>
+        <!-- estilos para la foto -->
+        <style>            
+            .kv-avatar .file-preview-frame,.kv-avatar .file-preview-frame:hover {
+                margin: 0;
+                padding: 0;
+                border: none;
+                box-shadow: none;
+                text-align: center;
+            }
+            .kv-avatar .file-input {
+                display: table-cell;
+                max-width: 220px;
+            }
+        </style>        
     </head>
     <body>
         <div class="wrapper">
             <%@include file="../../encabezado.jsp" %>
-            <h1 style="margin-top: 100px;text-align: center">Solicitud de Inscripción</h1>
-            <form role="form" action="" method="post" data-fv-message="NO">
+            <h1 class="titulo">Solicitud de Inscripción</h1>
+            <form role="form" action="" method="post" data-fv-message="NO" enctype="multipart/form-data">
+                
+                <div class="elegir-maestria">                   
+                    <label for="cmb_Maestria"  >Maestría: </label>
+                    <select class="form-control " >
+                    <option>Maestrá en Marroneo</option>
+                    </select>
+                </div>
+                
                 <fieldset class="form-group datos">
                     <legend class="legend">Datos Personales</legend>
                     <div class="izquierda">
-                        <label class="izquierda" for="txt_Ced">Ced o Pasaporte: </label>
+                        <label class="izquierda" for="txt_Ced">Cédula o Pasaporte: </label>
                         <input id="txt_Ced" class="form-control izquierda" type="text" pattern="[0-9]+" required>
                     </div>
 
-                    <div class="derecha">
-                        <label >Subir Foto</label>
-                        <div class="input-group" style="width: 250px">                            
-                            <span class="input-group-btn ">
-                                <span class="btn btn-default btn-file ">
-                                    Buscar: <input  type="file" id="imgInp">
-                                </span>
-                            </span>
-                            <input type="text"  class="form-control " style="width: 200px" readonly>
+                    <div class="derecha" style="text-align: center">                        
+                        <div class="kv-avatar center-block" style="width:200px">
+                            <input id="avatar" name="avatar" type="file" class="file-loading">
                         </div>
-                        <img class="derecha" id='img-upload' src="../../img/user.png"/>
+                        <div id="kv-avatar-errors" class="center-block" style="width:200px;display:none;"></div>
                     </div> 
-                    
-                  
 
                     <div class="izquierda limpiar-izq">
                         <label for="txt_Nom">Nombres: </label>
@@ -90,13 +92,10 @@
                     </div>
                 </fieldset>
                 <button class="btn btn-primary" type="submit">Enviar</button>
+               
             </form>
-        </div>        
+        </div>  
         <%@include file="../../piePagina.jsp" %>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/verFoto.js"></script>
-
     </body>
 
 </html>
