@@ -40,13 +40,17 @@ public class registrarPermisos extends HttpServlet {
             String codigo = request.getParameter("codigo").toString();
             String nombre = request.getParameter("nombre").toString().toUpperCase();
             String orden = request.getParameter("orden").toString();
-            
+            String contenedor = request.getParameter("contenedor").toString();
+            String ruta = request.getParameter("ruta").toString();
+            //Validar que no dejen Datos en blanco ojo
             Conexion conex = new Conexion();
             conex.Conectar();
             ResultSet resultado;
+            String dir ="";
+            dir = "CargarPaginaURL("+contenedor+","+ruta+")";
             
-            String [] param = {codigo,nombre,orden};
-            String [] paramTipo = {"int","string","int"};
+            String [] param = {codigo,nombre,orden,dir};
+            String [] paramTipo = {"int","string","int","string"};
             
             try {
                 resultado = conex.EjecutarProcedimietoFullParametrosxTipoValor("registrar_permisos", param, paramTipo);

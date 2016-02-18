@@ -95,16 +95,26 @@
                   <div class="form-group" id="contPadre">
                           <label class="col-sm-2 col-sm-2 control-label">Descripciòn</label>
                             <div class="col-sm-10">
-                                <input type="text" name="txtPadreNombre" style="text-transform: uppercase;" required="true" id="txtPadreNombre" class="form-control">
+                                <input type="text" name="txtPadreNombre" maxlength="50" style="text-transform: uppercase;" required="true" id="txtPadreNombre" class="form-control">
                            </div>
                       
                   </div>
                   <div class="form-group" id="contHijo" style="display: none;">
                           <label class="col-sm-2 col-sm-2 control-label">Descripciòn</label>
                             <div class="col-sm-10">
-                                <input type="text" name="txtHijoNombre" style="text-transform: uppercase;" id="txtHijoNombre" class="form-control">
+                                <input type="text" name="txtHijoNombre" maxlength="50" style="text-transform: uppercase;" id="txtHijoNombre" class="form-control">
                            </div>
                       
+                  </div>
+                  <div class="form-group" id="contHijo1" style="display: none;">
+                      <label class="col-sm-2 col-sm-2 control-label">Contenedor</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="txtConten" maxlength="250" placeholder="(Nombre del Contenedor)" id="txtForm" class="form-control">
+                       </div>
+                      <label class="col-sm-2 col-sm-2 control-label">Formulario</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="txtForm" maxlength="250" placeholder="(Ruta del Formulario)" id="txtForm" class="form-control">
+                       </div>
                   </div>
                   <div class="form-group">
                       <div class="col-sm-2"></div>

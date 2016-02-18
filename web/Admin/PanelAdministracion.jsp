@@ -330,6 +330,7 @@
                                  ArrayList nombre = new ArrayList();
                                  ArrayList urls = new ArrayList();
                                  ArrayList _id = new ArrayList();
+                                 boolean band = false;
                              %>
                             <%
                                 padre.clear();
@@ -356,8 +357,14 @@
                                     
                             <%
                                 for(i = 0;i<padre.size();i++){
-                                if(Integer.parseInt(padre.get(i).toString())==0){    
-                                 
+                                if(Integer.parseInt(padre.get(i).toString())==0){
+                                    band = false;
+                                    for(j = 0;j<padre.size();j++){
+                                        if(Integer.parseInt(_id.get(i).toString())==Integer.parseInt(padre.get(j).toString())){
+                                            band = true;
+                                        }
+                                    }
+                                 if(band){
                             %>
                                     <ul class="sidebar-menu">
                                         <li>
@@ -367,6 +374,7 @@
                                     </ul>
                                                 <div id="panel-element<%=i%>" class="panel-collapse collapse">
                             <%
+                                
                                 for(j = 0;j<padre.size();j++){
                                     if(Integer.parseInt(_id.get(i).toString())==Integer.parseInt(padre.get(j).toString())){%>
                                         <div class="panel-body">
@@ -374,7 +382,8 @@
                                         </div>
                             <%}}%>
                                 </div>
-                            <%}}%>
+                                
+                            <%}}}%>
                             </div>
                            <!--Fin del Menu dinamico-->
                         </section>

@@ -31,11 +31,16 @@ function CargarPaginaExterna(NombreContenedor,nombreCarpeta,nombrePagina)
     $("#"+NombreContenedor).html('<div><center><img src="../img/ajax-loader.gif"/></center></div>');
     $("#"+NombreContenedor).load('../'+nombreCarpeta+'/'+nombrePagina+'.jsp');
 }
-
+function CargarPaginaURL(NombreContenedor,ruta)
+{
+    $("#"+NombreContenedor).html('<div><center><img src="../img/ajax-loader.gif"/></center></div>');
+    $("#"+NombreContenedor).load(ruta+'.jsp');
+}
 //Seleccion de nivel padre e hijo
 function cambioNivel(){
     if($("#cboNivel").val()== "0"){
         $("#contHijo").css("display","none");
+        $("#contHijo1").css("display","none");
         $("#contPadre label").remove();
         $("#contPadre div").remove();
         $("#contPadre").append("<label class=\"col-sm-2 col-sm-2 control-label\">Descripciòn</label>\n"+
@@ -46,6 +51,7 @@ function cambioNivel(){
         $("#contPadre label").remove();
         $("#contPadre div").remove();
         $("#contHijo").css("display","block");
+        $("#contHijo1").css("display","block");
         //Cargar Padres
         $.ajax({
             url: "../obtenerPermisoPadres.dbo",
@@ -195,7 +201,9 @@ function registrarPadre(){
             data: {
                 codigo:codigo,//Nivel
                 orden: $("#cboOrden").val(),//Orden
-                nombre: nombre
+                nombre: nombre,
+                contenedor: $("#txtConten").val(),
+                ruta: $("#txtForm").val()
             },//reques evia el parametro que digito
             success: function (data) {
                            if(data.toString() === "ok"){
@@ -204,6 +212,8 @@ function registrarPadre(){
                                alert("Datos Ingresados Correctamente");
                                $("#txtPadreNombre").val("");
                                $("#txtHijoNombre").val("");
+                               $("#txtConten").val("");
+                               $("#txtForm").val("");
                            }
                             
                         },error: function (message) {
