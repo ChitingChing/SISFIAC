@@ -444,7 +444,9 @@
                                     Movimientos
                                 </header>
                                 <div class="panel-body">
-                                    <div id="cargar_Elementos" width="100%" height="500"></div>
+                                    <div id="cargar_Elementos">
+                                        
+                                    </div>
                                 </div>
                                         </section>
                                         <!--earning graph end-->

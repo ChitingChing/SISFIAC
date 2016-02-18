@@ -23,17 +23,17 @@ function mostrarCuadroDialogoPersonalizado(NombreContenedor)
 // Esto es para cargar una página sin parámetros....
 function CargarPaginaInterna(NombreContenedor,nombrePagina)
 {
-    $("#"+NombreContenedor).html('<div><center><img src="../img/ajax-loader.gif"/></center></div>');
+    $("#"+NombreContenedor).html('<div><center><img class=\"imgAjax\" src="../img/ajax-loader.gif"/></center></div>');
     $("#"+NombreContenedor).load(nombrePagina+'.jsp');
 }
 function CargarPaginaExterna(NombreContenedor,nombreCarpeta,nombrePagina)
 {
-    $("#"+NombreContenedor).html('<div><center><img src="../img/ajax-loader.gif"/></center></div>');
+    $("#"+NombreContenedor).html('<div><center><img class=\"imgAjax\" src="../img/ajax-loader.gif"/></center></div>');
     $("#"+NombreContenedor).load('../'+nombreCarpeta+'/'+nombrePagina+'.jsp');
 }
 function CargarPaginaURL(NombreContenedor,ruta)
 {
-    $("#"+NombreContenedor).html('<div><center><img src="../img/ajax-loader.gif"/></center></div>');
+    $("#"+NombreContenedor).html('<div><center><img class=\"imgAjax\" src="../img/ajax-loader.gif"/></center></div>');
     $("#"+NombreContenedor).load(ruta+'.jsp');
 }
 //Seleccion de nivel padre e hijo
@@ -84,7 +84,7 @@ function cambioNivel(){
 function cambioUsuario(){
     //obtener_arbol_permisos.dbo
     var _estado = false;
-    $("#contArbolPermisos").html('<div><center><img src="../img/ajax-loader.gif"/></center></div>');
+    $("#contArbolPermisos").html('<div><center><img class=\"imgAjax\" src="../img/ajax-loader.gif"/></center></div>');
     if($("#cboUsuario").val() != "-1"){
         $.ajax({
             url: "../obtener_arbol_permisos.dbo",
@@ -213,6 +213,7 @@ function registrarPadre(){
                                $("#txtHijoNombre").val("");
                                $("#txtConten").val("");
                                $("#txtForm").val("");
+                               cambioUsuario();
                            }
                             
                         },error: function (message) {
