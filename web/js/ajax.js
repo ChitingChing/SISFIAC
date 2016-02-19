@@ -166,7 +166,7 @@ function seleccionHijo(id,estado){
     else
         guardarPermisoUsuarios(estado.value,0);
 }
-
+//Metodo para asignar los permisos a los usuarios
 function guardarPermisoUsuarios(id,estado){
     $.ajax({
             url: "../registrarPermisosxUsuarios.dbo",
@@ -177,6 +177,8 @@ function guardarPermisoUsuarios(id,estado){
                 estado:estado
             },//reques evia el parametro que digito
             success: function (data) {
+                //Metodo paa cargar el menu izquiero del panel de administracion
+                cargarMenuNavUsuario();
                 
             }
              });
@@ -214,8 +216,72 @@ function registrarPadre(){
                                $("#txtConten").val("");
                                $("#txtForm").val("");
                                cambioUsuario();
+                               cargarMenuNavUsuario;
                            }
                             
+                        },error: function (message) {
+                        response([]);
+                    }
+                });
+    cargarMenuNavUsuario();
+}
+
+//Funcion para cargar el menu de navegacion izquierdo del usuario
+function cargarMenuNavUsuario(){
+    //obtener_arbol_permisos.dbo
+    var band = false;
+    $("#cargarMenuUsuarios").html('<div><center><img class=\"imgAjax\" src="../img/ajax-loader.gif"/></center></div>');
+        $.ajax({
+            url: "../obtenerMenuNavUsuario.dbo",
+            dataType: "text",
+            data: {
+                
+            },//reques evia el parametro que digito
+            success: function (data) {
+                
+                var str1="";
+                $("#cargarMenuUsuarios div").remove();
+                $("#cargarMenuUsuarios ul").remove();
+                var parsed = JSON.parse(data);
+                for (var i = 0; i < parsed.length; i++) {
+                    if(parsed[i].padre == 0){
+                        band = false;
+                        for(var j = 0;j<parsed.length;j++){
+                            if(parsed[i].id == parsed[j].padre){
+                                band = true;
+                            }
+                        }
+                        if(band){
+                            
+                            str1 += "<ul class=\"sidebar-menu\">\n" +
+"                                        <li>\n" +
+"                                            <a class=\"panel-title collapsed menu-collapse\" data-toggle=\"collapse\" data-parent=\"#panel-izquierdo\" href=\"#panel-element"+i+"\">\n" +
+"                                                <!--<span class=\"glyphicon glyphicon-user icon-leftP\"></span>-->"+parsed[i].nombre+"<span class=\"glyphicon glyphicon-collapse-down icon-rightP\"></span></a>\n" +
+"                                        </li>\n" +
+"                                    </ul>\n" +
+"                                                <div id=\"panel-element"+i+"\" class=\"panel-collapse collapse\">";
+
+                                for(var j = 0;j<parsed.length;j++){
+                                    if(parsed[i].id == parsed[j].padre){
+                                        
+                                        band = true;
+                                        str1 += "<div class=\"panel-body\">\n" +
+"                                            <a class=\"cursor\" onclick=\""+parsed[j].urls+"\">"+parsed[j].nombre+"</a>\n" +
+"                                        </div>";
+                                }
+                            }
+                            str1 += "</div>";
+                        }
+                        
+                    }
+                         
+                  }
+                    if(parsed.length <= 0){
+                        //str +="<option value=\"-1\">(No hay datos)</option>\n"; 
+                    }
+                        
+                         $("#cargarMenuUsuarios").append(str1);
+                           // response(parsed);
                         },error: function (message) {
                         response([]);
                     }
