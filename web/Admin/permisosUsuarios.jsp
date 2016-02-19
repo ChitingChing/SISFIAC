@@ -197,7 +197,7 @@
                             %>
                             <tr id="<%=contador%>" style="background-color: #2cb9b3;">
                                     <td><%=_ids.get(i)%></td>
-                                    <td><%=_nombre.get(i)%></td>
+                                    <td class="col-md-2 form-group"><input class="form-control" disabled="true" type="text" name="txtNombre<%=contador%>" id="txtNombre<%=contador%>" style="border: none; background-color: #2cb9b3;" value="<%=_nombre.get(i)%>"></td>
                                     <td><%=_padre.get(i)%></td>
                                     <td><%=_urls.get(i)%></td>
                                     <td><%=_orden.get(i)%></td>
@@ -213,12 +213,12 @@
                                     
                                         <tr id="<%=contador%>">
                                             <td><%=_ids.get(j)%></td>
-                                            <td class="input-group input-group-sm m-b-10"><input class="form-control" type="text" name="txt<%=contador%>" id="txt<%=contador%>" style="border: none;" value="<%=_nombre.get(j)%>"></td>
+                                            <td><input class="form-control" disabled="true" type="text" name="txtNombre<%=contador%>" id="txtNombre<%=contador%>" style="border: none;" value="<%=_nombre.get(j)%>"></td>
                                             <td><%=_padre.get(j)%></td>
-                                            <td><%=_urls.get(j)%></td>
+                                            <td class="col-md-8 form-group"><input class="form-control" type="text" name="txtUrls<%=contador%>" id="txtUrls<%=contador%>" style="border: none; width: 100%;" value="<%=_urls.get(j)%>"></td>
                                             <td><%=_orden.get(j)%></td>
-                                            <td><button onclick="editarPermiso('<%=contador%>','<%=_ids.get(j)%>')" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></td>
-                                            <td><button onclick="eliminarPermiso('<%=contador%>','<%=_ids.get(j)%>')" class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></td>
+                                            <td><button onclick="editarPermiso('<%=contador%>','<%=_ids.get(j)%>')" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i><i class="fa fa-save"></i></button></td>
+                                            <td><button onclick="eliminarPermiso('<%=contador%>','<%=_ids.get(j)%>')" class="btn btn-default btn-xs"><i class="fa fa-times" alt="delete"></i><i class="fa fa-recycle"></i></button></td>
                                         </tr>
                             <%}}%>
                             <%}}contador++;}%>

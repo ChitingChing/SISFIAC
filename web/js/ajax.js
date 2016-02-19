@@ -230,7 +230,7 @@ function registrarPadre(){
 function cargarMenuNavUsuario(){
     //obtener_arbol_permisos.dbo
     var band = false;
-    $("#cargarMenuUsuarios").html('<div><center><img class=\"imgAjax\" src="../img/ajax-loader.gif"/></center></div>');
+    //$("#cargarMenuUsuarios").html('<div><center><img class=\"imgAjax\" src="../img/ajax-loader.gif"/></center></div>');
         $.ajax({
             url: "../obtenerMenuNavUsuario.dbo",
             dataType: "text",
@@ -289,7 +289,10 @@ function cargarMenuNavUsuario(){
 }
 
 function editarPermiso(posicion,valor){
-    alert("editar");
+    //alert("editar");
+    $("#txtNombre"+posicion).removeAttr('disabled');
+    //$("#txtNombre"+posicion).attr('disabled','disabled');
+    $("#"+posicion+" td")[5].innerHTML="<img class=\"imgAjaxTabla\" src='../img/ajax-loader.gif' /> Procesando";
 }
 function eliminarPermiso(posicion,valor){
     alert("Eliminar");
