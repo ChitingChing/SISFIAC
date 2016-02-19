@@ -37,6 +37,8 @@ public class registrarPermisos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
+            //Este servlet registra el arbol, para asignar permiso a los usuarios
             String codigo = request.getParameter("codigo").toString();
             String nombre = request.getParameter("nombre").toString().toUpperCase();
             String orden = request.getParameter("orden").toString();
@@ -47,7 +49,10 @@ public class registrarPermisos extends HttpServlet {
             conex.Conectar();
             ResultSet resultado;
             String dir ="";
-            dir = "CargarPaginaURL('"+contenedor+"','"+ruta+"')";
+            if(contenedor != "" && ruta != "")
+                dir = "CargarPaginaURL('"+contenedor+"','"+ruta+"')";
+            else
+                dir = "";
             
             String [] param = {codigo,nombre,orden,dir};
             String [] paramTipo = {"int","string","int","string"};

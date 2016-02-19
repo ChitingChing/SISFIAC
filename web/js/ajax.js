@@ -287,3 +287,10 @@ function cargarMenuNavUsuario(){
                     }
                 });
 }
+
+function editarPermiso(posicion,valor){
+    alert("editar");
+}
+function eliminarPermiso(posicion,valor){
+    alert("Eliminar");
+}

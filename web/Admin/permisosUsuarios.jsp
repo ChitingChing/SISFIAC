@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="AccesoDatos.Conexion"%>
 <%@page import="java.sql.ResultSet"%>
 <ul class="nav nav-tabs">
@@ -128,6 +129,104 @@
         <!--Eliminacion de permisos-->
         <div id="contact-2" class="tab-pane ">
             Edición
+            
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr style="background-color: #9d9d9d;">
+                          <th>Id</th>
+                          <th>Descripción</th>
+                          <th>Padre</th>
+                          <th>Formulario</th>
+                          <th>Orden</th>
+                          <th>Editar</th>
+                          <th>Eliminar</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                <%! 
+                                 int i = 0, j=0, contador=0;
+                                 ResultSet rs;
+                                 ArrayList _padre = new ArrayList();
+                                 ArrayList _nombre = new ArrayList();
+                                 ArrayList _urls = new ArrayList();
+                                 ArrayList _ids = new ArrayList();
+                                 ArrayList _orden = new ArrayList();
+                                 boolean band = false;
+                             %>
+                            <%
+                                contador = 0;
+                                _padre.clear();
+                                _nombre.clear();
+                                _urls.clear();
+                                _ids.clear();
+                                _orden.clear();
+                                    conex = new Conexion();
+                                    conex.Conectar();
+                                    
+                                    String valor =  session.getAttribute("id").toString();
+                                    String [] param = {valor};
+                                    String [] paramTipo = {"int"};
+                                     try {
+                                 rs = conex.EjecutarProcedimietoFullParametrosxTipoValor("obtenerMenuNavUsuario", param, paramTipo);
+                                 
+                                 while(rs.next()){
+                                     _padre.add(rs.getInt(1));
+                                     _nombre.add(rs.getString(2));
+                                     if(rs.getObject(3) != null)
+                                        _urls.add(rs.getString(3));
+                                     else
+                                         _urls.add("");
+                                     _ids.add(rs.getInt(4));
+                                     _orden.add(rs.getInt(5));
+                                 }
+                                     }catch (Exception e) {
+            }%>
+                                    
+                            <%
+                                for(i = 0;i<_padre.size();i++){
+                                if(Integer.parseInt(_padre.get(i).toString())==0){
+                                    band = false;
+                                    for(j = 0;j<_padre.size();j++){
+                                        if(Integer.parseInt(_ids.get(i).toString())==Integer.parseInt(_padre.get(j).toString())){
+                                            band = true;
+                                        }
+                                    }
+                                 if(band){
+                                     
+                            %>
+                            <tr id="<%=contador%>" style="background-color: #2cb9b3;">
+                                    <td><%=_ids.get(i)%></td>
+                                    <td><%=_nombre.get(i)%></td>
+                                    <td><%=_padre.get(i)%></td>
+                                    <td><%=_urls.get(i)%></td>
+                                    <td><%=_orden.get(i)%></td>
+                                    <td><button onclick="editarPermiso('<%=contador%>','<%=_ids.get(i)%>')" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></td>
+                                    <td><button onclick="eliminarPermiso('<%=contador%>','<%=_ids.get(i)%>')" class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></td>
+                                </tr>
+                            <%
+                                
+                                for(j = 0;j<_padre.size();j++){
+                                    if(Integer.parseInt(_ids.get(i).toString())==Integer.parseInt(_padre.get(j).toString())){
+                                        contador++;
+                            %>
+                                    
+                                        <tr id="<%=contador%>">
+                                            <td><%=_ids.get(j)%></td>
+                                            <td class="input-group input-group-sm m-b-10"><input class="form-control" type="text" name="txt<%=contador%>" id="txt<%=contador%>" style="border: none;" value="<%=_nombre.get(j)%>"></td>
+                                            <td><%=_padre.get(j)%></td>
+                                            <td><%=_urls.get(j)%></td>
+                                            <td><%=_orden.get(j)%></td>
+                                            <td><button onclick="editarPermiso('<%=contador%>','<%=_ids.get(j)%>')" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></td>
+                                            <td><button onclick="eliminarPermiso('<%=contador%>','<%=_ids.get(j)%>')" class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></td>
+                                        </tr>
+                            <%}}%>
+                            <%}}contador++;}%>
+                </tbody>
+                </table>
+                </div>
+
+
         </div>
     </div>
 </div>

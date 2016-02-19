@@ -1,31 +1,17 @@
+<%-- 
+    Document   : registrarnotas
+    Created on : 18/02/2016, 21:51:54
+    Author     : server
+--%>
 
-<div class="panel-body table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Apellidos</th>
-              <th>Nombres</th>
-              <!-- <th>Client</th> -->
-              <th>Deadline</th>
-              <!-- <th>Price</th> -->
-              <th>Estado</th>
-              <th>Progreso</th>
-          </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Facebook</td>
-          <td>Mark</td>
-          <!-- <td>Steve</td> -->
-          <td>10/10/2014</td>
-          <!-- <td>$1500</td> -->
-          <td><span class="label label-danger">in progress</span></td>
-          <td><span class="badge badge-info">50%</span></td>
-      </tr>
-      
-    </tbody>
-    </table>
-    </div>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+    </body>
+</html>
