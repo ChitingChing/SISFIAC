@@ -34,7 +34,7 @@
                                 <%
                                     ResultSet rs = null;
                                     Conexion conex = new Conexion();
-                                    conex.Conectar();
+                                    
                                     try{
                                     rs = conex.EjecutarProcedimieto("obtener_usuarios");
                                     boolean band = true;
@@ -42,7 +42,7 @@
                                     band= false;    
                                 %>1
                                 <option value=<%=rs.getObject(1)%>><%=rs.getString(2).toString().toUpperCase()%> <%=rs.getString(3).toString().toUpperCase()%> (<%=rs.getString(4).toString().toUpperCase()%>)</option>
-                                <%} 
+                                <%} conex.Cerrar();
                                     if(band){
                                 %>
                                     <option value="-1">(No hay Usuarios)</option>
@@ -145,7 +145,7 @@
                    </thead>
                    <tbody>
                 <%! 
-                                 int i = 0, j=0, contador=0;
+                                 int i = 0, j=0, contador=0, fila = 0, conTxt=0;
                                  ResultSet rs;
                                  ArrayList _padre = new ArrayList();
                                  ArrayList _nombre = new ArrayList();
@@ -156,13 +156,15 @@
                              %>
                             <%
                                 contador = 0;
+                                conTxt=0;
+                                
                                 _padre.clear();
                                 _nombre.clear();
                                 _urls.clear();
                                 _ids.clear();
                                 _orden.clear();
                                     conex = new Conexion();
-                                    conex.Conectar();
+                                    
                                     
                                     String valor =  session.getAttribute("id").toString();
                                     String [] param = {valor};
@@ -180,12 +182,14 @@
                                      _ids.add(rs.getInt(4));
                                      _orden.add(rs.getInt(5));
                                  }
+                                 conex.Cerrar();
                                      }catch (Exception e) {
             }%>
                                     
                             <%
                                 for(i = 0;i<_padre.size();i++){
                                 if(Integer.parseInt(_padre.get(i).toString())==0){
+                                    fila = 0;
                                     band = false;
                                     for(j = 0;j<_padre.size();j++){
                                         if(Integer.parseInt(_ids.get(i).toString())==Integer.parseInt(_padre.get(j).toString())){
@@ -195,33 +199,37 @@
                                  if(band){
                                      
                             %>
-                            <tr id="<%=contador%>" style="background-color: #2cb9b3;">
+                            <tr class="<%=contador%>" style="background-color: #2cb9b3;">
                                     <td><%=_ids.get(i)%></td>
-                                    <td class="col-md-2 form-group"><input class="form-control" disabled="true" type="text" name="txtNombre<%=contador%>" id="txtNombre<%=contador%>" style="border: none; background-color: #2cb9b3;" value="<%=_nombre.get(i)%>"></td>
+                                    <td class="col-md-2 form-group"><input class="form-control" disabled="true" type="text" name="txtNombre<%=conTxt%>" id="txtNombre<%=conTxt%>" style="border: none; background-color: #2cb9b3;" value="<%=_nombre.get(i)%>"></td>
                                     <td><%=_padre.get(i)%></td>
                                     <td><%=_urls.get(i)%></td>
                                     <td><%=_orden.get(i)%></td>
-                                    <td><button onclick="editarPermiso('<%=contador%>','<%=_ids.get(i)%>')" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></td>
-                                    <td><button onclick="eliminarPermiso('<%=contador%>','<%=_ids.get(i)%>')" class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></td>
+                                    <td><button id="btnEditar<%=conTxt%>" onclick="editarPermiso('<%=contador%>','<%=_ids.get(i)%>','<%=fila%>','<%=conTxt%>')" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button></td>
+                                    <td><button id="btnEliminarPermiso<%=conTxt%>" onclick="eliminarPermiso('<%=contador%>','<%=_ids.get(i)%>','<%=fila%>')" class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></td>
                                 </tr>
                             <%
                                 
                                 for(j = 0;j<_padre.size();j++){
                                     if(Integer.parseInt(_ids.get(i).toString())==Integer.parseInt(_padre.get(j).toString())){
-                                        contador++;
+                                        //contador++;
+                                        conTxt++;
+                                        fila++;
                             %>
                                     
-                                        <tr id="<%=contador%>">
+                                        <tr class="<%=contador%>">
                                             <td><%=_ids.get(j)%></td>
-                                            <td><input class="form-control" disabled="true" type="text" name="txtNombre<%=contador%>" id="txtNombre<%=contador%>" style="border: none;" value="<%=_nombre.get(j)%>"></td>
+                                            <td><input class="form-control" disabled="true" type="text" name="txtNombre<%=conTxt%>" id="txtNombre<%=conTxt%>" style="border: none;" value="<%=_nombre.get(j)%>"></td>
                                             <td><%=_padre.get(j)%></td>
-                                            <td class="col-md-8 form-group"><input class="form-control" type="text" name="txtUrls<%=contador%>" id="txtUrls<%=contador%>" style="border: none; width: 100%;" value="<%=_urls.get(j)%>"></td>
+                                            <td class="col-md-8 form-group"><input disabled="true" class="form-control" type="text" name="txtUrls<%=conTxt%>" id="txtUrls<%=conTxt%>" style="border: none; width: 100%;" value="<%=_urls.get(j)%>"></td>
                                             <td><%=_orden.get(j)%></td>
-                                            <td><button onclick="editarPermiso('<%=contador%>','<%=_ids.get(j)%>')" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i><i class="fa fa-save"></i></button></td>
-                                            <td><button onclick="eliminarPermiso('<%=contador%>','<%=_ids.get(j)%>')" class="btn btn-default btn-xs"><i class="fa fa-times" alt="delete"></i><i class="fa fa-recycle"></i></button></td>
+                                            <td class="col-md-1 form-group">
+                                                <button id="btnEditar<%=conTxt%>" onclick="editarPermiso('<%=contador%>','<%=_ids.get(j)%>','<%=fila%>','<%=conTxt%>')" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i></button>
+                                            </td>
+                                            <td><button id="btnEliminarPermiso<%=conTxt%>" onclick="eliminarPermiso('<%=contador%>','<%=_ids.get(j)%>','<%=fila%>')" class="btn btn-default btn-xs"><i class="fa fa-times" alt="delete"></i></button></td>
                                         </tr>
                             <%}}%>
-                            <%}}contador++;}%>
+                            <%}}contador++;conTxt++;}%>
                 </tbody>
                 </table>
                 </div>

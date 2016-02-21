@@ -338,7 +338,7 @@
                                 urls.clear();
                                 _id.clear();
                                     Conexion conex = new Conexion();
-                                    conex.Conectar();
+                                    
                                     
                                     String valor =  session.getAttribute("id").toString();
                                     String [] param = {valor};
@@ -351,7 +351,7 @@
                                      nombre.add(rs.getString(2));
                                      urls.add(rs.getString(3));
                                      _id.add(rs.getInt(4));
-                                 }
+                                 }conex.Cerrar();
                                      }catch (Exception e) {
             }%>
                                     

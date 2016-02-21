@@ -288,12 +288,51 @@ function cargarMenuNavUsuario(){
                 });
 }
 
-function editarPermiso(posicion,valor){
-    //alert("editar");
-    $("#txtNombre"+posicion).removeAttr('disabled');
-    //$("#txtNombre"+posicion).attr('disabled','disabled');
-    $("#"+posicion+" td")[5].innerHTML="<img class=\"imgAjaxTabla\" src='../img/ajax-loader.gif' /> Procesando";
+function editarPermiso(fila,valor,columna,idTxt){
+    $("#txtNombre"+idTxt).removeAttr('disabled');
+    $("#txtNombre"+idTxt).css('background-color','white');
+    $("#txtNombre"+idTxt).focus();
+    
+    if($($("."+fila)[columna]).find("td")[2].innerHTML != "0"){
+        $("#txtUrls"+idTxt).removeAttr('disabled');
+    }
+    
+    $($("."+fila)[columna]).find("td")[5].innerHTML="<img class=\"imgAjaxTabla\" src='../img/ajax-loader.gif' /> Procesando";
+
+    $($("."+fila)[columna]).find("td")[5].innerHTML= "<button id=\"btnGuardar"+idTxt+"\" onclick=\"guardarEdicionPermiso('"+fila+"','"+valor+"','"+columna+"','"+idTxt+"')\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-save\"></i></button>\n" +
+"                                       <button id=\"btnCancelarEdicion"+idTxt+"\" onclick=\"cancelarEdicionPermiso('"+fila+"','"+valor+"','"+columna+"','"+idTxt+"')\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-recycle\"></i></button>";
 }
-function eliminarPermiso(posicion,valor){
-    alert("Eliminar");
+function cancelarEdicionPermiso(fila,valor,columna,idTxt){
+        
+    $("#txtNombre"+idTxt).css('background-color','#2cb9b3');
+    $("#txtNombre"+idTxt).attr('disabled','disabled');
+    
+    if($($("."+fila)[columna]).find("td")[2].innerHTML != "0"){
+        $("#txtUrls"+idTxt).attr('disabled','disabled');
+        $("#txtUrls"+idTxt).val($($($("."+fila)[columna]).find("td")[3].innerHTML).val());
+        $("#txtNombre"+idTxt).css('background-color','');
+    }
+    
+    $($("."+fila)[columna]).find("td")[5].innerHTML="<img class=\"imgAjaxTabla\" src='../img/ajax-loader.gif' /> Procesando";
+    
+
+    $("#txtNombre"+idTxt).val($($($("."+fila)[columna]).find("td")[1].innerHTML).val());
+    
+    $($("."+fila)[columna]).find("td")[5].innerHTML= "<button id=\"btnEditar"+idTxt+"\" onclick=\"editarPermiso('"+fila+"','"+valor+"','"+columna+"','"+idTxt+"')\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-pencil\"></i></button>";
 }
+function guardarEdicionPermiso(fila,valor,columna,idTxt){
+    $($("."+fila)[columna]).find("td")[5].innerHTML="<img class=\"imgAjaxTabla\" src='../img/ajax-loader.gif' /> Procesando";
+    
+}
+function eliminarPermiso(fila,valor,posicion){
+    //alert($("."+fila+" td")[2].innerHTML);
+    if($($("."+fila)[posicion]).find("td")[2].innerHTML != "0"){
+        $($("."+fila)[posicion]).css("display","none");
+    }else{
+        for (var i = $("."+fila).length-1; i >= 0; i--) {
+            $($("."+fila)[i]).css("display","none");
+        }
+    }
+        
+}
+
