@@ -57,5 +57,5 @@ public class ClsDetallePermiso {
         this.estado = estado;
     }
     
-    
+    //public String eliminarPermisoUsuario
 }
