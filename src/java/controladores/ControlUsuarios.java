@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import negocio.ClsUsuario;
 
 /**
  *
@@ -33,50 +34,51 @@ public class ControlUsuarios extends HttpServlet {
             String usuario = request.getParameter("txt_User").toString();
             String clave = request.getParameter("txt_Pass").toString();
             
+            
             String passw = Class_Encript.getStringMessageDigest(clave, Class_Encript.SHA256);
             
-            Conexion conex = new Conexion();
-            conex.Conectar();
+            
+            
+            ClsUsuario clsUsuario = new ClsUsuario();
+            clsUsuario.setNick(usuario);
+            clsUsuario.setClave(passw.toCharArray());
             ResultSet resultado;
-            String [] param = {usuario,passw};
+            
             boolean band = false;
             try {
                 //comparando datos                                     
-                resultado = conex.EjecutarProcedimietoFullParametros("usuario_acceso", param);
+                resultado = clsUsuario.obtenerUsuarioLogueado();
                 while(resultado.next()){
+                    clsUsuario.setIdUsuario(resultado.getInt(3));
+                    clsUsuario.setNombres(resultado.getString(1));
+                    clsUsuario.setApellidos(resultado.getString(2));
+                    
                     //Parametros de la bd para guardar en la sesion
-                    request.getSession().setAttribute("id",resultado.getString(3));//Cedula del usuario
-                    request.getSession().setAttribute("usuario", resultado.getString(1)+" "+resultado.getString(2));//Nombre del usuario
+                    request.getSession().setAttribute("id",clsUsuario.getIdUsuario());//Cedula del usuario
+                    request.getSession().setAttribute("usuario", clsUsuario.getNombres()+" "+clsUsuario.getApellidos());//Nombre del usuario
                     request.getSession().setAttribute("rol", resultado.getString(4));//Rol del usuario
                     request.getSession().setAttribute("estado", "ok");
                     band = true;
                 }
-                conex.Cerrar();
+                //conex.Cerrar();
                 if(band){
                     
                     String rol_Usuario = (String) request.getSession().getAttribute("rol");
                     
-                    if(rol_Usuario.equals("Administrador") || rol_Usuario.equals("Secretario(a)")){
-                        //Administrador y secretaria
-                        //RequestDispatcher rd = request.getRequestDispatcher("Admin/PanelAdministracion.jsp");
-                        //rd.forward(request, response);
+                    if(rol_Usuario.equals("Administrador") || rol_Usuario.equals("Secretario(a)") || rol_Usuario.equals("Profesor(a)")){
                         response.sendRedirect("Admin/PanelAdministracion.jsp");
-                    }
-                    else if(rol_Usuario.equals("Profesor(a)")){
-                        //Usuarios y docentes
-                        response.sendRedirect("Admin/PanelUsuarioDocente.jsp");
-                    }
-                }else{
+                    }else{
                     request.getSession().setAttribute("error","error");
                     response.sendRedirect("login.jsp");
                    }
+                }
             } catch (Exception e) {
                 request.getSession().setAttribute("error","error");
                 response.sendRedirect("login.jsp");
             }
             
             //out.println("Usuario o contraseña incorrecta");
-            conex.Cerrar();
+            //conex.Cerrar();
         } finally {
             out.close();
         }

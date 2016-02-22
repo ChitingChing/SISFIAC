@@ -5,7 +5,9 @@
  */
 package negocio;
 
+import AccesoDatos.Conexion;
 import java.sql.Date;
+import java.sql.ResultSet;
 
 /**
  *
@@ -25,15 +27,32 @@ public class ClsUsuario {
     private String celular;
     private char estado;
     private String nick;
-    private char clave;//ojoooo
+    private char [] clave;//ojoooo
     private String usuarioBd;
-    private char claveBd;
+    private char [] claveBd;
     private int idTipoUsuario;
 
     public ClsUsuario() {
+        this.idUsuario = 0;
+        this.cedPasaporte = "";
+        this.nombres = "";
+        this.apellidos = "";
+        this.direccion = "";
+        this.telefono = "";
+        this.email = "";
+        this.estadoCivil = ' ';
+        this.sexo = ' ';
+        this.fechaNacimiento = null;
+        this.celular = "";
+        this.estado = ' ';
+        this.nick = "";
+        this.clave = null;
+        this.usuarioBd = "";
+        this.claveBd = null;
+        this.idTipoUsuario = 0;
     }
 
-    public ClsUsuario(int idUsuario, String cedPasaporte, String nombres, String apellidos, String direccion, String telefono, String email, char estadoCivil, char sexo, Date fechaNacimiento, String celular, char estado, String nick, char clave, String usuarioBd, char claveBd, int idTipoUsuario) {
+    public ClsUsuario(int idUsuario, String cedPasaporte, String nombres, String apellidos, String direccion, String telefono, String email, char estadoCivil, char sexo, Date fechaNacimiento, String celular, char estado, String nick, char[] clave, String usuarioBd, char[] claveBd, int idTipoUsuario) {
         this.idUsuario = idUsuario;
         this.cedPasaporte = cedPasaporte;
         this.nombres = nombres;
@@ -52,7 +71,7 @@ public class ClsUsuario {
         this.claveBd = claveBd;
         this.idTipoUsuario = idTipoUsuario;
     }
-
+    
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -157,28 +176,12 @@ public class ClsUsuario {
         this.nick = nick;
     }
 
-    public char getClave() {
-        return clave;
-    }
-
-    public void setClave(char clave) {
-        this.clave = clave;
-    }
-
     public String getUsuarioBd() {
         return usuarioBd;
     }
 
     public void setUsuarioBd(String usuarioBd) {
         this.usuarioBd = usuarioBd;
-    }
-
-    public char getClaveBd() {
-        return claveBd;
-    }
-
-    public void setClaveBd(char claveBd) {
-        this.claveBd = claveBd;
     }
 
     public int getIdTipoUsuario() {
@@ -188,7 +191,34 @@ public class ClsUsuario {
     public void setIdTipoUsuario(int idTipoUsuario) {
         this.idTipoUsuario = idTipoUsuario;
     }
+
+    public char[] getClave() {
+        return clave;
+    }
+
+    public void setClave(char[] clave) {
+        this.clave = clave;
+    }
+
+    public char[] getClaveBd() {
+        return claveBd;
+    }
+
+    public void setClaveBd(char[] claveBd) {
+        this.claveBd = claveBd;
+    }
     
+    
+    
+    public ResultSet obtenerUsuarioLogueado(){
+        ResultSet rs = null;
+        Conexion conex = new Conexion();
+        conex.Conectar();
+        String [] param = {getNick(),String.valueOf(getClave())};
+        rs = conex.EjecutarProcedimietoFullParametros("usuario_acceso", param);
+        conex.Cerrar();
+        return rs;
+    }
     
     
 }
