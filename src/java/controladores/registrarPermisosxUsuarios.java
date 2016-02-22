@@ -49,6 +49,7 @@ public class registrarPermisosxUsuarios extends HttpServlet {
             String [] paramTipo = {"int","int","string"};
             
             resultado = conex.EjecutarProcedimietoFullParametrosxTipoValor("registrarpermisosxusuarios", param, paramTipo);
+            conex.Cerrar();
             } catch (Exception e) {
             }
             

@@ -53,6 +53,7 @@ public class obtenerPermisoPadres extends HttpServlet {
                     jsObj.put("nombre", rs.getObject(2));
                     jsArray.add(jsObj);
                 }
+                conex.Cerrar();
                 out.println(jsArray);
             } catch (Exception ex) {
                 

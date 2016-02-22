@@ -1,4 +1,4 @@
-
+<%@include file="../../Admin/controlUsuarios.jsp" %>
 <div class="panel-body table-responsive">
         <table class="table table-hover">
           <thead>

@@ -17,21 +17,26 @@
         <title>Login Postgrado</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/styleLG.css" rel="stylesheet">
         <link href="css/estilos-login.css" rel="stylesheet">
+        <script type="text/javascript" src="js/ajax.js"></script>
     </head>
-    <body>
+    <body class="imgCargandoo">
 
         <div class="wrapper">
             <%@include file="encabezado.jsp" %>
 
-            <form class="login-form" method="POST" action="ControlUsuarios.dbo">
+            <form class="login-form" method="POST" onsubmit="muestraGranDiv();" action="ControlUsuarios.dbo">
                 <h2 class="form-signin-heading">Inicia Sesión</h2>
                 <label for="txt_User" class="sr-only">Usuario/Nick</label>
                 <input id="txt_User" name="txt_User" class="form-control login-form-input" placeholder="usuario" 
                        required="" autofocus="" pattern="^([a-z]+[0-9]{0,2}){5,12}$" title="Ingrese su nick/usuario!" value="" />
                 <label for="txt_Pass" class="sr-only">Clave</label>
                 <input id="txt_Pass" name="txt_Pass" class="form-control login-form-input" placeholder="Clave" required="" type="password" value="" />
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                <div class="procesando">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                </div>
+                
                 <%
                     if (session.getAttribute("error") != null)
                         if (session.getAttribute("error").equals("error")) {

@@ -56,18 +56,9 @@
       <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
+            
             <a href="../Admin/PanelAdministracion.jsp" class="logo">
-                <%
-                    if(session.getAttribute("rol") != null){
-                        if(session.getAttribute("rol").equals("Administrador") || session.getAttribute("rol").equals("Secretario(a)")){
-                %>
-                <%=session.getAttribute("rol")%>
-                <%}else if(session.getAttribute("rol").equals("Profesor(a)")){%>
-                    response.sendRedirect("PanelUsuarioDocente.jsp");
-                <%}}else
-                    response.sendRedirect("../index.jsp");
-                %>
-                    
+                <%@include file="controlUsuarios.jsp" %>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -337,10 +328,11 @@
                                 nombre.clear();
                                 urls.clear();
                                 _id.clear();
+                                String valor = "";
                                     Conexion conex = new Conexion();
                                     
-                                    
-                                    String valor =  session.getAttribute("id").toString();
+                                    if(session.getAttribute("id") != null)
+                                        valor =  session.getAttribute("id").toString();
                                     String [] param = {valor};
                                     String [] paramTipo = {"int"};
                                      try {
@@ -367,7 +359,7 @@
                                  if(band){
                             %>
                                     <ul class="sidebar-menu">
-                                        <li>
+                                        <li class="activePI">
                                             <a class="panel-title collapsed menu-collapse" data-toggle="collapse" data-parent="#panel-izquierdo" href="#panel-element<%=i%>">
                                                 <!--<span class="glyphicon glyphicon-user icon-leftP"></span>--><%=nombre.get(i).toString()%><span class="glyphicon glyphicon-collapse-down icon-rightP"></span></a>
                                         </li>
@@ -377,7 +369,7 @@
                                 
                                 for(j = 0;j<padre.size();j++){
                                     if(Integer.parseInt(_id.get(i).toString())==Integer.parseInt(padre.get(j).toString())){%>
-                                        <div class="panel-body">
+                                        <div class="panel-body icon-right">
                                             <a class="cursor" onclick="<%=urls.get(j)%>"><%=nombre.get(j).toString()%></a>
                                         </div>
                             <%}}%>

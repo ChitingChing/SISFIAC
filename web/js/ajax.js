@@ -333,6 +333,24 @@ function eliminarPermiso(fila,valor,posicion){
             $($("."+fila)[i]).css("display","none");
         }
     }
-        
 }
 
+function muestraGranDiv(){
+    $('.procesando button').remove();
+    var str= "<center><img src=\"img/loading.gif\" class=\"imgAjaxTabla\" /> Procesando.....</center>";
+    $('.procesando').append(str);
+}
+
+function tblEdicionPermisos(){
+    $("#contact-2").html("<div><center><img class=\"imgAjax\" src=\"../img/ajax-loader.gif\"/></center></div>");
+    $.ajax({
+            url: "../obtenerTblEdicionPermisos.dbo",
+            dataType: "text",
+            data: {
+            },//reques evia el parametro que digito
+            success: function (data) {
+                $("#contact-2 div").remove();
+                $('#contact-2').html(data);
+            }
+             });
+}

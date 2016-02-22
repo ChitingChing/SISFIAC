@@ -1,3 +1,4 @@
+<%@include file="../../Admin/controlUsuarios.jsp" %>
 <div class="panel-body">
       <form class="form-horizontal tasi-form" method="get">
           <div class="form-group">

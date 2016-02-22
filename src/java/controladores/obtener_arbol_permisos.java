@@ -79,6 +79,7 @@ public class obtener_arbol_permisos extends HttpServlet {
                                 jsObj.put("estado", rs.getObject(5));
                             }
                             band = true;
+                            conex.Cerrar();
                         jsArray.add(jsObj);
                         
                 }
