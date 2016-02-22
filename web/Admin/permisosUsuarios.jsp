@@ -4,7 +4,7 @@
 <%@include file="controlUsuarios.jsp" %>
 <ul class="nav nav-tabs">
     <li class="active">
-        <a data-toggle="tab" href="#home-2">
+        <a data-toggle="tab" onclick="cambioUsuario();" href="#home-2">
             <i class="fa fa-home">Asignar/Quitar</i>
         </a>
     </li>

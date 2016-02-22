@@ -5,6 +5,8 @@
  */
 package negocio;
 
+import AccesoDatos.Conexion;
+
 /**
  *
  * @author Usuario08
@@ -76,6 +78,14 @@ public class ClsPermisos {
     public void setEstado(char estado) {
         this.estado = estado;
     }
-    
+   //Metodo para actualizar los detalles de permisos como nombre, form y orden
+    public String actualizarPermisoDetalles(){
+        Conexion conex = new Conexion();
+        conex.Conectar();
+        String [] param = {String.valueOf(getIdPermiso()),getDescripcion(),getForm(), String.valueOf(getOrden())};
+        String [] paramTipo = {"int","string","string","int"};
+        conex.EjecutarProcedimietoFullParametrosxTipoValor("actualizarPermisoDetalles", param, paramTipo);
+        return "";
+    }
     
 }

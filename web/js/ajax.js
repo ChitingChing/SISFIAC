@@ -290,7 +290,10 @@ function cargarMenuNavUsuario(){
 
 function editarPermiso(fila,valor,columna,idTxt){
     $("#txtNombre"+idTxt).removeAttr('disabled');
+    $("#txtOrden"+idTxt).removeAttr('disabled');
     $("#txtNombre"+idTxt).css('background-color','white');
+    $("#txtOrden"+idTxt).css('background-color','white');
+    
     $("#txtNombre"+idTxt).focus();
     
     if($($("."+fila)[columna]).find("td")[2].innerHTML != "0"){
@@ -302,10 +305,13 @@ function editarPermiso(fila,valor,columna,idTxt){
     $($("."+fila)[columna]).find("td")[5].innerHTML= "<button id=\"btnGuardar"+idTxt+"\" onclick=\"guardarEdicionPermiso('"+fila+"','"+valor+"','"+columna+"','"+idTxt+"')\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-save\"></i></button>\n" +
 "                                       <button id=\"btnCancelarEdicion"+idTxt+"\" onclick=\"cancelarEdicionPermiso('"+fila+"','"+valor+"','"+columna+"','"+idTxt+"')\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-recycle\"></i></button>";
 }
+
 function cancelarEdicionPermiso(fila,valor,columna,idTxt){
         
     $("#txtNombre"+idTxt).css('background-color','#2cb9b3');
+    $("#txtOrden"+idTxt).css('background-color','#2cb9b3');
     $("#txtNombre"+idTxt).attr('disabled','disabled');
+    $("#txtOrden"+idTxt).attr('disabled','disabled');
     
     if($($("."+fila)[columna]).find("td")[2].innerHTML != "0"){
         $("#txtUrls"+idTxt).attr('disabled','disabled');
@@ -322,14 +328,42 @@ function cancelarEdicionPermiso(fila,valor,columna,idTxt){
 }
 function guardarEdicionPermiso(fila,valor,columna,idTxt){
     $($("."+fila)[columna]).find("td")[5].innerHTML="<img class=\"imgAjaxTabla\" src='../img/ajax-loader.gif' /> Procesando";
-    
+    var url="";
+    var padre = $("#txtNombre"+idTxt).val();
+    if($($("."+fila)[columna]).find("td")[2].innerHTML != "0"){
+        url = $("#txtUrls"+idTxt).val();
+        actualizarPermiso(valor,padre,url,$("#txtOrden"+idTxt).val());
+        $("#txtUrls"+idTxt).attr('disabled','disabled');
+        $("#txtNombre"+idTxt).css('background-color','');
+    }else{
+        actualizarPermiso(valor,padre,url,$("#txtOrden"+idTxt).val());
+    }
+    $($("."+fila)[columna]).find("td")[5].innerHTML= "<button id=\"btnEditar"+idTxt+"\" onclick=\"editarPermiso('"+fila+"','"+valor+"','"+columna+"','"+idTxt+"')\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-pencil\"></i></button>";
+}
+function actualizarPermiso(id,padre,url,orden){
+    $.ajax({
+            url: "../actualizarPermisosDetalles.dbo",
+            dataType: "text",
+            data: {
+                id:id,
+                padre: padre,
+                urls: url,
+                orden: orden
+            },//reques evia el parametro que digito
+            success: function (data) {
+                cargarMenuNavUsuario();
+            }
+             });
 }
 function eliminarPermiso(fila,valor,posicion){
     //alert($("."+fila+" td")[2].innerHTML);
     if($($("."+fila)[posicion]).find("td")[2].innerHTML != "0"){
         $($("."+fila)[posicion]).css("display","none");
+        guardarPermisoUsuarios(valor,0);
     }else{
         for (var i = $("."+fila).length-1; i >= 0; i--) {
+            guardarPermisoUsuarios($($("."+fila)[i]).find("td")[0].innerHTML,0);
+            //alert($($("."+fila)[i]).find("td")[0].innerHTML);
             $($("."+fila)[i]).css("display","none");
         }
     }

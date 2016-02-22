@@ -5,22 +5,21 @@
  */
 package controladores;
 
-import AccesoDatos.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import negocio.ClsPermisos;
 
 /**
  *
  * @author Usuario08
  */
-@WebServlet(name = "registrarPermisosxUsuarios", urlPatterns = {"/registrarPermisosxUsuarios.dbo"})
-public class registrarPermisosxUsuarios extends HttpServlet {
+@WebServlet(name = "actualizarPermisosDetalles", urlPatterns = {"/actualizarPermisosDetalles.dbo"})
+public class actualizarPermisosDetalles extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,26 +35,19 @@ public class registrarPermisosxUsuarios extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            //registrarpermisosxusuarios
-            String permisoId = request.getParameter("permisoId").toString();
-            String permisoUs = request.getParameter("permisoUs").toString().toUpperCase();
-            String estado = request.getParameter("estado").toString();
+            //out.println("<!DOCTYPE html>");
+            ClsPermisos clsPermiso = new ClsPermisos();
             
-            if(permisoUs.equals("-1"))
-                permisoUs = request.getSession().getAttribute("id").toString();
+            String id = request.getParameter("id");
+            String descripcion = request.getParameter("padre");
+            String urls = request.getParameter("urls");
+            String orden = request.getParameter("orden");
             
-            Conexion conex = new Conexion();
-            conex.Conectar();
-            ResultSet resultado;
-            try {
-            String [] param = {permisoId,permisoUs,estado};
-            String [] paramTipo = {"int","int","string"};
-            
-            resultado = conex.EjecutarProcedimietoFullParametrosxTipoValor("registrarpermisosxusuarios", param, paramTipo);
-            conex.Cerrar();
-            } catch (Exception e) {
-            }
-            
+            clsPermiso.setIdPermiso(Integer.parseInt(id));
+            clsPermiso.setDescripcion(descripcion);
+            clsPermiso.setForm(urls);
+            clsPermiso.setOrden(Integer.parseInt(orden));
+            clsPermiso.actualizarPermisoDetalles();
         }
     }
 
