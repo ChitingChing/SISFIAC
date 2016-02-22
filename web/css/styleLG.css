@@ -25,3 +25,6 @@
         background-origin: padding-box;
         background-size: auto auto;
 }
+.input-left{
+    padding-left: 20px;
+}
