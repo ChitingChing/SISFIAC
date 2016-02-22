@@ -1,29 +1,29 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package controladores;
+package negocio;
 
+import AccesoDatos.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import negocio.ClsPermisos;
 
 /**
  *
- * @author Usuario08
+ * @author Administrador
  */
-@WebServlet(name = "actualizarPermisosDetalles", urlPatterns = {"/actualizarPermisosDetalles.dbo"})
-public class actualizarPermisosDetalles extends HttpServlet {
+public class CargarBanners extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -33,27 +33,48 @@ public class actualizarPermisosDetalles extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        PrintWriter out = response.getWriter();
+        try {
             /* TODO output your page here. You may use following sample code. */
-            //out.println("<!DOCTYPE html>");
-            ClsPermisos clsPermiso = new ClsPermisos();
             
-            String id = request.getParameter("id");
-            String descripcion = request.getParameter("padre").toString().trim().toUpperCase();
-            String urls = request.getParameter("urls");
-            String orden = request.getParameter("orden");
             
-            clsPermiso.setIdPermiso(Integer.parseInt(id));
-            clsPermiso.setDescripcion(descripcion);
-            clsPermiso.setForm(urls);
-            clsPermiso.setOrden(Integer.parseInt(orden));
-            clsPermiso.actualizarPermisoDetalles();
+            try{
+            Conexion cn = new Conexion();
+                        cn.Conectar();
+                         if(cn.Estado.equals("ok"))
+                         {
+                              ResultSet rs = cn.Consulta("select * from tbanuncio;");
+                             out.println("<\"<option value='-1'>Seleccione un banner</option>\">");
+                              while(rs.next())
+                             {
+                                 out.println("<\"<option value='"+rs.getString(1)+"'>"+rs.getString(3)+" "+"</option>\">");
+                             }
+                         }
+                         else
+                         {
+                             out.println("<\"<option value='1'>Sin conexion</option>\">");
+                         }
+                         
+                        
+            
+            
+            }
+            catch(SQLException ee)
+            {
+                out.println("<\"<option value='1'>Nada</option>\">");
+            }
+            
+            
+        } finally {
+            
+            out.close();
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP
+     * <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -67,7 +88,8 @@ public class actualizarPermisosDetalles extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP
+     * <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -89,5 +111,4 @@ public class actualizarPermisosDetalles extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

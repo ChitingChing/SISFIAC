@@ -308,15 +308,16 @@ function editarPermiso(fila,valor,columna,idTxt){
 
 function cancelarEdicionPermiso(fila,valor,columna,idTxt){
         
-    $("#txtNombre"+idTxt).css('background-color','#2cb9b3');
-    $("#txtOrden"+idTxt).css('background-color','#2cb9b3');
+    $("#txtNombre"+idTxt).css('background-color','#ebf4f8');
+    $("#txtOrden"+idTxt).css('background-color','#ebf4f8');
     $("#txtNombre"+idTxt).attr('disabled','disabled');
     $("#txtOrden"+idTxt).attr('disabled','disabled');
     
     if($($("."+fila)[columna]).find("td")[2].innerHTML != "0"){
         $("#txtUrls"+idTxt).attr('disabled','disabled');
         $("#txtUrls"+idTxt).val($($($("."+fila)[columna]).find("td")[3].innerHTML).val());
-        $("#txtNombre"+idTxt).css('background-color','');
+        $("#txtNombre"+idTxt).css('background-color','white');
+        $("#txtOrden"+idTxt).css('background-color','white');
     }
     
     $($("."+fila)[columna]).find("td")[5].innerHTML="<img class=\"imgAjaxTabla\" src='../img/ajax-loader.gif' /> Procesando";
@@ -334,10 +335,15 @@ function guardarEdicionPermiso(fila,valor,columna,idTxt){
         url = $("#txtUrls"+idTxt).val();
         actualizarPermiso(valor,padre,url,$("#txtOrden"+idTxt).val());
         $("#txtUrls"+idTxt).attr('disabled','disabled');
-        $("#txtNombre"+idTxt).css('background-color','');
+        $("#txtNombre"+idTxt).css('background-color','#ebf4f8');
+        
     }else{
         actualizarPermiso(valor,padre,url,$("#txtOrden"+idTxt).val());
     }
+    $("#txtOrden"+idTxt).css('background-color','#ebf4f8');
+    $("#txtOrden"+idTxt).attr('disabled','disabled');
+    $("#txtNombre"+idTxt).attr('disabled','disabled');
+    $("#txtNombre"+idTxt).css('background-color','#ebf4f8');
     $($("."+fila)[columna]).find("td")[5].innerHTML= "<button id=\"btnEditar"+idTxt+"\" onclick=\"editarPermiso('"+fila+"','"+valor+"','"+columna+"','"+idTxt+"')\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-pencil\"></i></button>";
 }
 function actualizarPermiso(id,padre,url,orden){
@@ -353,7 +359,7 @@ function actualizarPermiso(id,padre,url,orden){
             success: function (data) {
                 cargarMenuNavUsuario();
             }
-             });
+     });
 }
 function eliminarPermiso(fila,valor,posicion){
     //alert($("."+fila+" td")[2].innerHTML);
@@ -387,4 +393,13 @@ function tblEdicionPermisos(){
                 $('#contact-2').html(data);
             }
              });
+}
+
+function isNumberKey(evt)
+ {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (!(charCode >= 48 && charCode <= 57) && charCode != 8 || charCode == 32){
+            return false;
+	}
+         return true;
 }

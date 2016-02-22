@@ -228,22 +228,6 @@
                             </a>
                             <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                                 <li class="dropdown-header text-center">Cuenta</li>
-
-                              <!--  <li>
-                                    <a href="#">
-                                    <i class="fa fa-clock-o fa-fw pull-right"></i>
-                                        <span class="badge badge-success pull-right">10</span> Updates</a>
-                                    <a href="#">
-                                    <i class="fa fa-envelope-o fa-fw pull-right"></i>
-                                        <span class="badge badge-danger pull-right">5</span> Messages</a>
-                                    <a href="#"><i class="fa fa-magnet fa-fw pull-right"></i>
-                                        <span class="badge badge-info pull-right">3</span> Subscriptions</a>
-                                    <a href="#"><i class="fa fa-question fa-fw pull-right"></i> <span class=
-                                        "badge pull-right">11</span> FAQ</a>
-                                </li>
-
-                                <li class="divider"></li>-->
-
                                     <li>
                                         <a href="#">
                                         <i class="fa fa-user fa-fw pull-right"></i>
@@ -283,17 +267,6 @@
                                 </div>
                             </div>
                                     <hr>
-                            <!-- search form -->
-                            <!--<form action="#" method="get" class="sidebar-form">
-                                <div class="input-group">
-                                    <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                                    <span class="input-group-btn">
-                                        <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                                    </span>
-                                </div>
-                            </form>-->
-                            <!-- /.search form -->
-                            <!-- sidebar menu: : style can be found in sidebar.less -->
                             <ul class="sidebar-menu">
                                 <li class="active">
                                     <a href="../index.jsp">
@@ -386,46 +359,6 @@
 
                 <!-- Main content -->
                 <section class="content">
-                    <!--Total imagenes documentos-->
-               <!--   <div class="row" style="margin-bottom:5px;">
-                        <div class="col-md-3">
-                            <div class="sm-st clearfix">
-                                <span class="sm-st-icon st-red"><i class="fa fa-check-square-o"></i></span>
-                                <div class="sm-st-info">
-                                    <span>3200</span>
-                                    Total Tasks
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="sm-st clearfix">
-                                <span class="sm-st-icon st-violet"><i class="fa fa-envelope-o"></i></span>
-                                <div class="sm-st-info">
-                                    <span>2200</span>
-                                    Total Messages
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="sm-st clearfix">
-                                <span class="sm-st-icon st-blue"><i class="fa fa-dollar"></i></span>
-                                <div class="sm-st-info">
-                                    <span>100,320</span>
-                                    Total Profit
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="sm-st clearfix">
-                                <span class="sm-st-icon st-green"><i class="fa fa-paperclip"></i></span>
-                                <div class="sm-st-info">
-                                    <span>4567</span>
-                                    Total Documents
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-<!--Fin de cuadros-->
                     <!-- Main row -->
                     <div class="row">
 
@@ -444,73 +377,6 @@
                                         <!--earning graph end-->
 
                                     </div>
-                                   <!-- <div class="col-lg-4">
-
-                                        <!--chat start-->
-                                      <!--  <section class="panel">
-                                            <header class="panel-heading">
-                                                Notificaciones
-                                            </header>
-                                                <div class="panel-body" id="noti-box">
-
-                                                    <div class="alert alert-block alert-danger">
-                                                        <button data-dismiss="alert" class="close close-sm" type="button">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                        <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                                                    </div>
-                                                    <div class="alert alert-success">
-                                                        <button data-dismiss="alert" class="close close-sm" type="button">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                        <strong>Well done!</strong> You successfully read this important alert message.
-                                                    </div>
-                                                    <div class="alert alert-info">
-                                                        <button data-dismiss="alert" class="close close-sm" type="button">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                        <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-                                                    </div>
-                                                    <div class="alert alert-warning">
-                                                        <button data-dismiss="alert" class="close close-sm" type="button">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                        <strong>Warning!</strong> Best check yo self, you're not looking too good.
-                                                    </div>
-
-
-                                                    <div class="alert alert-block alert-danger">
-                                                        <button data-dismiss="alert" class="close close-sm" type="button">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                        <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                                                    </div>
-                                                    <div class="alert alert-success">
-                                                        <button data-dismiss="alert" class="close close-sm" type="button">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                        <strong>Well done!</strong> You successfully read this important alert message.
-                                                    </div>
-                                                    <div class="alert alert-info">
-                                                        <button data-dismiss="alert" class="close close-sm" type="button">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                        <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-                                                    </div>
-                                                    <div class="alert alert-warning">
-                                                        <button data-dismiss="alert" class="close close-sm" type="button">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                        <strong>Warning!</strong> Best check yo self, you're not looking too good.
-                                                    </div>
-
-
-
-                                                </div>
-                                        </section>-->
-
-
-
                       </div>
 
 
@@ -582,42 +448,6 @@
                 radioClass: 'iradio_flat-grey'
             });
 </script>
-<!--<script type="text/javascript">
-    $(function() {
-                "use strict";
-                //BAR CHART
-                var data = {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            fillColor: "rgba(220,220,220,0.2)",
-                            strokeColor: "rgba(220,220,220,1)",
-                            pointColor: "rgba(220,220,220,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [65, 59, 80, 81, 56, 55, 40]
-                        },
-                        {
-                            label: "My Second dataset",
-                            fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            pointColor: "rgba(151,187,205,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: [28, 48, 40, 19, 86, 27, 90]
-                        }
-                    ]
-                };
-            new Chart(document.getElementById("linechart").getContext("2d")).Line(data,{
-                responsive : true,
-                maintainAspectRatio: false,
-            });
 
-            });
-            // Chart.defaults.global.responsive = true;
-</script>-->
 </body>
 </html>

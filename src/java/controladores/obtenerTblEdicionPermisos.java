@@ -105,12 +105,12 @@ public class obtenerTblEdicionPermisos extends HttpServlet {
                                         }
                                     }
                                     if(band){
-                                     str += "<tr class=\""+contador+"\" style=\"background-color: #2cb9b3;\">\n" +
+                                     str += "<tr class=\""+contador+"\" style=\"background-color: #ebf4f8;\">\n" +
 "                                    <td>"+_ids.get(i)+"</td>\n" +
-"                                    <td class=\"col-md-2 form-group\"><input class=\"form-control\" disabled=\"true\" type=\"text\" name=\"txtNombre"+conTxt+"\" id=\"txtNombre"+conTxt+"\" style=\"border: none; background-color: #2cb9b3;\" value=\""+_nombre.get(i)+"\"></td>\n" +
+"                                    <td class=\"col-md-2 form-group\"><input class=\"form-control\" disabled=\"true\" type=\"text\" name=\"txtNombre"+conTxt+"\" id=\"txtNombre"+conTxt+"\" style=\"text-transform: uppercase; border: none; background-color: #ebf4f8;\" value=\""+_nombre.get(i)+"\"></td>\n" +
 "                                    <td>"+_padre.get(i)+"</td>\n" +
 "                                    <td>"+_urls.get(i)+"</td>\n" +
-"                                    <td class=\"col-md-1 form-group\"><input class=\"form-control\" disabled=\"true\" type=\"text\" name=\"txtOrden"+conTxt+"\" id=\"txtOrden"+conTxt+"\" style=\"border: none; background-color: #2cb9b3;\" value=\""+_orden.get(i)+"\"></td>\n" +
+"                                    <td class=\"col-md-1 form-group\"><input class=\"form-control\" disabled=\"true\" type=\"text\" name=\"txtOrden"+conTxt+"\" id=\"txtOrden"+conTxt+"\" onKeyPress=\"return isNumberKey(event)\" style=\"border: none; background-color: #ebf4f8;\" value=\""+_orden.get(i)+"\"></td>\n" +
 "                                    <td><button id=\"btnEditar"+conTxt+"\" onclick=\"editarPermiso('"+contador+"','"+_ids.get(i)+"','"+fila+"','"+conTxt+"')\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-pencil\"></i></button></td>\n" +
 "                                    <td><button id=\"btnEliminarPermiso"+conTxt+"\" onclick=\"eliminarPermiso('"+contador+"','"+_ids.get(i)+"','"+fila+"')\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-times\"></i></button></td>\n" +
 "                                </tr>";
@@ -121,10 +121,10 @@ public class obtenerTblEdicionPermisos extends HttpServlet {
                                         fila++;
                                         str+="<tr class=\""+contador+"\">\n" +
 "                                            <td>"+_ids.get(j)+"</td>\n" +
-"                                            <td><input class=\"form-control\" disabled=\"true\" type=\"text\" name=\"txtNombre"+conTxt+"\" id=\"txtNombre"+conTxt+"\" style=\"border: none;\" value=\""+_nombre.get(j)+"\"></td>\n" +
+"                                            <td><input class=\"form-control\" disabled=\"true\" type=\"text\" name=\"txtNombre"+conTxt+"\" id=\"txtNombre"+conTxt+"\" style=\"text-transform: uppercase; border: none; background-color: white;\" value=\""+_nombre.get(j)+"\"></td>\n" +
 "                                            <td>"+_padre.get(j)+"</td>\n" +
-"                                            <td class=\"col-md-8 form-group\"><input disabled=\"true\" class=\"form-control\" type=\"text\" name=\"txtUrls"+conTxt+"\" id=\"txtUrls"+conTxt+"\" style=\"border: none; width: 100%;\" value=\""+_urls.get(j)+"\"></td>\n" +
-"                                            <td class=\"col-md-1 form-group\"><input class=\"form-control\" disabled=\"true\" type=\"text\" name=\"txtOrden"+conTxt+"\" id=\"txtOrden"+conTxt+"\" style=\"border: none;\" value=\""+_orden.get(j)+"\"></td>\n" +
+"                                            <td class=\"col-md-8 form-group\"><input disabled=\"true\" class=\"form-control\" type=\"text\" name=\"txtUrls"+conTxt+"\" id=\"txtUrls"+conTxt+"\" style=\"border: none; width: 100%; background-color: white;\" value=\""+_urls.get(j)+"\"></td>\n" +
+"                                            <td class=\"col-md-1 form-group\"><input class=\"form-control\" disabled=\"true\" type=\"text\" name=\"txtOrden"+conTxt+"\" id=\"txtOrden"+conTxt+"\" onKeyPress=\"return isNumberKey(event)\" style=\"border: none; background-color: white;\" value=\""+_orden.get(j)+"\"></td>\n" +
 "                                            <td class=\"col-md-1 form-group\">\n" +
 "                                                <button id=\"btnEditar"+conTxt+"\" onclick=\"editarPermiso('"+contador+"','"+_ids.get(j)+"','"+fila+"','"+conTxt+"')\" class=\"btn btn-default btn-xs\"><i class=\"fa fa-pencil\"></i></button>\n" +
 "                                            </td>\n" +

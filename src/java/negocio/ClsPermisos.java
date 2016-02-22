@@ -85,6 +85,7 @@ public class ClsPermisos {
         String [] param = {String.valueOf(getIdPermiso()),getDescripcion(),getForm(), String.valueOf(getOrden())};
         String [] paramTipo = {"int","string","string","int"};
         conex.EjecutarProcedimietoFullParametrosxTipoValor("actualizarPermisoDetalles", param, paramTipo);
+        conex.Cerrar();
         return "";
     }
     

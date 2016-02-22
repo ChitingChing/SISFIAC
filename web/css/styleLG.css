@@ -14,6 +14,7 @@
 }
 .activePI > a:hover {
     color: #f6f6f6;
+    
     background: #425164;
         background-color: rgb(66, 81, 100);
         background-image: none;
