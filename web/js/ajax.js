@@ -361,18 +361,37 @@ function actualizarPermiso(id,padre,url,orden){
             }
      });
 }
+//Metodo que actua en la tabla de permisos cuando se selecciona eliminar
 function eliminarPermiso(fila,valor,posicion){
-    //alert($("."+fila+" td")[2].innerHTML);
+    
+    //$($("."+fila)[columna]).find("td")[6].innerHTML="<img class=\"imgAjaxTabla\" src='../img/ajax-loader.gif' /> Procesando";
+    
     if($($("."+fila)[posicion]).find("td")[2].innerHTML != "0"){
         $($("."+fila)[posicion]).css("display","none");
-        guardarPermisoUsuarios(valor,0);
+        eliminarPermisosTodosUsuarios(valor,0);
     }else{
         for (var i = $("."+fila).length-1; i >= 0; i--) {
-            guardarPermisoUsuarios($($("."+fila)[i]).find("td")[0].innerHTML,0);
+            eliminarPermisosTodosUsuarios($($("."+fila)[i]).find("td")[0].innerHTML,0);
             //alert($($("."+fila)[i]).find("td")[0].innerHTML);
             $($("."+fila)[i]).css("display","none");
         }
     }
+}
+//Este metodo lo utilizo para eliminar todos los permisos
+//de cualquier usuario
+function eliminarPermisosTodosUsuarios(id,estado){
+    
+    $.ajax({
+            url: "../eliminarPermisoTodosUsuarios.dbo",
+            dataType: "text",
+            data: {
+                permisoId:id,
+                estado:estado
+            },//reques evia el parametro que digito
+            success: function (data) {
+               cargarMenuNavUsuario();
+            }
+             });
 }
 
 function muestraGranDiv(){

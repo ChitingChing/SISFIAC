@@ -57,9 +57,9 @@ public class obtenerMenuNavUsuario extends HttpServlet {
                     jsObj.put("urls", rs.getObject(3));
                     jsObj.put("id", rs.getObject(4));
                     jsArray.add(jsObj);
-                }
+                }conex.Cerrar();
                 out.println(jsArray);
-                conex.Cerrar();
+                
 
             } catch (Exception ex) {
                 
